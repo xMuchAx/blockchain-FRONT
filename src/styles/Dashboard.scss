@@ -1,6 +1,6 @@
 @import "../assets/styles/Variables";
 .dashboardWrapper {
-    padding: 5.3125rem 0 0;
+    padding: $size-85 $size-0 $size-0;
     margin: auto;
     max-width: calc(100% - 32px);
     width: $size-1280;
@@ -19,7 +19,7 @@
             color: $grey-100;
             font-size: $size-12;
             font-weight: $font-w-400;
-            margin-top: 16px;
+            margin-top: $size-16;
         }
         .dashboard-bottom strong {
             font-size: $size-14;
@@ -45,7 +45,8 @@
         hr {
             margin: $size-16 auto;
             color: $grey-100;
-            opacity: 0.4;
+            opacity: 0.1;
+            width: 100%;
         }
     }
     > div {

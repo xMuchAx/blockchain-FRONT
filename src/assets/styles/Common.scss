@@ -61,8 +61,6 @@ h6 {
     filter: blur(200px);
 }
 
-.mainWrapper {
-    // max-width: calc(100% - $size-32);
-    // width: $size-1280;
-    // margin: -$size-80 auto 0 auto;
+img {
+    pointer-events: none;
 }

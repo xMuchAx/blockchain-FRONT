@@ -31,7 +31,7 @@ const Historique: FC<HistoriqueProps> = ({
                     <p>Reçu par {recipient}</p>
                 </div>
             </div>
-            <div>
+            <div className="transact-infos">
                 <strong>
                     {amount < 0 ? "-" : "+"} {Math.abs(amount)}{" "}
                     <span>CAT²</span>

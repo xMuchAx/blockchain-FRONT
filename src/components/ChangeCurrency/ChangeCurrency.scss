@@ -1,10 +1,23 @@
 @import "../../assets/styles/Variables.scss";
+
+.transfert-wallet {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: $size-8;
+    width: 100%;
+    height: 100%;
+}
+
 .transfert {
     display: flex;
     flex-direction: column;
     border-radius: $size-8;
     background-color: $grey-50;
-    > div:first-child {
+    width: 100%;
+
+    .transfert-input {
         padding: $size-8 $size-12;
         background: $grey-50;
         display: flex;
@@ -13,12 +26,14 @@
         position: relative;
         border-radius: $size-8 $size-8 $size-0 $size-0;
     }
-    > div:last-child {
-        padding: $size-12 $size-24;
+
+    .transfert-output {
+        padding: $size-12;
         display: flex;
         align-items: center;
         justify-content: space-between;
         font-weight: $font-w-700;
+
         .deviseCat {
             display: flex;
             gap: $size-10;
@@ -32,14 +47,11 @@
         font-size: $size-14;
         border-radius: $size-4;
         width: 100%;
+        flex-grow: 1;
     }
 
     .MuiAutocomplete-root .MuiOutlinedInput-root {
         padding: 0;
-    }
-
-    .MuiFormControl-root {
-        border: none;
     }
 
     .MuiInputBase-input {
@@ -47,34 +59,69 @@
         font-size: $size-12;
     }
 }
-.flagUs {
+
+.transfert-flag {
     width: $size-20;
     height: $size-20;
-    background: url("https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/US_flag_49_stars.svg/1280px-US_flag_49_stars.svg.png")
-        no-repeat center center;
     background-size: cover;
-    border-radius: 50%;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: $size-50-pct;
+    flex-shrink: 0;
 }
+
+.flag-us {
+    background-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/US_flag_49_stars.svg/1280px-US_flag_49_stars.svg.png");
+}
+
+.flag-eur {
+    background-image: url("https://upload.wikimedia.org/wikipedia/commons/b/b7/Flag_of_Europe.svg");
+}
+
+.flag-gbp {
+    background-image: url("https://upload.wikimedia.org/wikipedia/en/a/ae/Flag_of_the_United_Kingdom.svg");
+}
+
+.flag-jpy {
+    background-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Flag_of_Japan.svg/30px-Flag_of_Japan.svg.png");
+}
+
 .wallet {
     display: flex;
+    align-items: center;
     justify-content: space-between;
-    strong {
-        font-size: $size-16;
-        font-weight: $font-w-700;
+    width: 100%;
+
+    .wallet-details {
+        display: flex;
+        flex-direction: column;
+        gap: $size-6;
+
+        strong {
+            font-size: $size-16;
+            font-weight: $font-w-700;
+        }
+
+        p {
+            font-size: $size-12;
+            font-weight: $font-w-300;
+            color: $grey-100;
+        }
     }
 
-    p {
-        font-size: $size-10;
-        font-weight: $font-w-300;
-        color: $grey-100;
-        margin-top: $size-4;
-    }
-    > div:last-child {
+    .wallet-amount {
         display: flex;
         align-items: center;
         gap: $size-10;
     }
 }
+
 .piece {
     width: $size-26;
+}
+
+.send-buttons {
+    display: flex;
+    gap: $size-10;
+    margin-top: $size-16;
 }
