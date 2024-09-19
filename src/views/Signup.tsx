@@ -3,7 +3,7 @@ import CoinWallet from "../assets/images/svg/wallet/wallet-cat__full.svg";
 import Logo from "../assets/images/svg/logo/logo-cat__white.svg";
 import "../styles/Signup.scss";
 import { Button } from "../components/Button";
-import { Link, useNavigate } from "react-router-dom"; // Import de useNavigate
+import { Link, useNavigate } from "react-router-dom";
 import { UrlsApi } from "../utils/urlsApi.enum";
 import { callApi } from "../utils/callApi";
 import { useAuth } from "../utils/authContext";
@@ -36,9 +36,8 @@ const Signup: React.FC = () => {
 
             if (token) {
                 login(token, email);
-                navigate('Home');
+                navigate('/home');  
             }
-
 
         } catch (error) {
             console.error('Erreur lors de l\'inscription :', error);
@@ -52,19 +51,21 @@ const Signup: React.FC = () => {
             </div>
 
             <div className="right">
-                <img src={Logo} alt="Logo"></img>
+                <img src={Logo} alt="Logo" />
                 <h1>
-                    <span>CAT²</span>, le chat qui batit ton trésor
+                    <span>CAT²</span>, le chat qui bâtit ton trésor
                 </h1>
                 <div className="form-wrapper">
-                    <form>
+                    <form onSubmit={ClickAuth}>
                         <div className="formGroup">
-                            <label htmlFor="Username">Nom d'utilisateur</label>
+                            <label htmlFor="username">Nom d'utilisateur</label>
                             <input
                                 type="text"
                                 placeholder="Entrez votre nom d'utilisateur"
-                                id="Username"
-                                name="Username"
+                                id="username"
+                                name="username"
+                                value={username}
+                                onChange={(e) => setUsername(e.target.value)}
                             />
                         </div>
 
@@ -92,49 +93,51 @@ const Signup: React.FC = () => {
                                 />
                             </div>
                         </div>
+
                         <div className="key">
                             <div className="formGroup">
-                                <label htmlFor="clepublique">Clé publique</label>
+                                <label htmlFor="public_address">Clé publique</label>
                                 <input
                                     type="text"
                                     placeholder="Entrez votre clé publique"
-                                    id="clepublique"
-                                    name="clepublique"
+                                    id="public_address"
+                                    name="public_address"
                                     value={public_address}
                                     onChange={(e) => setPublicKey(e.target.value)}
                                 />
                             </div>
                             <div className="formGroup">
-                                <label htmlFor="cleprivee">Clé privée</label>
+                                <label htmlFor="private_key">Clé privée</label>
                                 <input
                                     type="text"
                                     placeholder="Entrez votre clé privée"
-                                    id="cleprivee"
-                                    name="cleprivee"
+                                    id="private_key"
+                                    name="private_key"
                                     value={private_key}
                                     onChange={(e) => setPrivateKey(e.target.value)}
                                 />
                             </div>
                         </div>
+
                         <div className="conditions">
-                            <p>J'accepte les conditions générales d'utilisations...</p>
+                            <p>J'accepte les conditions générales d'utilisation...</p>
                         </div>
 
-            <div className="button">
-              <Button variant="primary" rounded={false}>
-                S'inscrire
-              </Button>
-            </div>
-          </form>
+                        <div className="button">
+                            <Button variant="primary" rounded={false}>
+                                S'inscrire
+                            </Button>
+                        </div>
+                    </form>
 
-          <div className="link">
-            <span>Déjà un compte ?</span>
-            <Link to="/login">Connectez-vous</Link>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
+                    <div className="link">
+                        <span>Déjà un compte ?</span>
+                        <Link to="/login">Connectez-vous</Link>
+                    </div>
+                </div>
+            </div>
+        </section>
+    );
 };
 
 export default Signup;
