@@ -1,0 +1,42 @@
+@import "../../assets/styles/Variables";
+
+.footer {
+    width: $size-1280;
+    max-width: calc(100% - $size-32);
+    margin: 0 auto;
+    color: $white-100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: $size-16;
+    padding: $size-16;
+    p {
+        font-size: $size-12;
+    }
+    ul {
+        display: flex;
+        gap: $size-10;
+    }
+    ul li {
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+    ul li:not(:last-child)::after {
+        content: "";
+        background-color: $white-10;
+        display: inline-block;
+        width: 7.5px;
+        height: 7.5px;
+        border-radius: 50%;
+    }
+}
+
+@media (max-width: 768px) {
+    .footer {
+        flex-direction: column;
+        gap: $size-24;
+        font-size: $size-12;
+    }
+}

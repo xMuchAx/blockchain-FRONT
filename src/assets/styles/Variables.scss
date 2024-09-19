@@ -1,0 +1,112 @@
+@import url("https://fonts.googleapis.com/css2?family=Geologica:wght@100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap");
+
+// Black
+$black-100: rgba(29, 28, 28, 1);
+$black-90: rgba(29, 28, 28, 0.9);
+$black-80: rgba(29, 28, 28, 0.8);
+$black-70: rgba(29, 28, 28, 0.7);
+$black-60: rgba(29, 28, 28, 0.6);
+$black-50: rgba(29, 28, 28, 0.5);
+$black-40: rgba(29, 28, 28, 0.4);
+$black-30: rgba(29, 28, 28, 0.3);
+$black-20: rgba(29, 28, 28, 0.2);
+$black-10: rgba(29, 28, 28, 0.1);
+
+// Orange
+$orange-100: rgba(246, 76, 2, 1);
+$orange-90: rgba(246, 76, 2, 0.9);
+$orange-80: rgba(246, 76, 2, 0.8);
+$orange-70: rgba(246, 76, 2, 0.7);
+$orange-60: rgba(246, 76, 2, 0.6);
+$orange-50: rgba(246, 76, 2, 0.5);
+$orange-40: rgba(246, 76, 2, 0.4);
+$orange-30: rgba(246, 76, 2, 0.3);
+$orange-25: rgba(246, 76, 2, 0.25);
+$orange-20: rgba(246, 76, 2, 0.2);
+$orange-10: rgba(246, 76, 2, 0.1);
+
+// Grey
+$grey-100: rgba(181, 181, 181, 1);
+$grey-90: rgba(181, 181, 181, 0.9);
+$grey-80: rgba(181, 181, 181, 0.8);
+$grey-70: rgba(181, 181, 181, 0.7);
+$grey-60: rgba(181, 181, 181, 0.6);
+$grey-50: rgba(181, 181, 181, 0.5);
+$grey-40: rgba(181, 181, 181, 0.4);
+$grey-25: rgba(181, 181, 181, 0.3);
+$grey-20: rgba(181, 181, 181, 0.2);
+$grey-10: rgba(181, 181, 181, 0.1);
+
+// White
+$white-100: rgba(252, 254, 255, 1);
+$white-90: rgba(252, 254, 255, 0.9);
+$white-80: rgba(252, 254, 255, 0.8);
+$white-70: rgba(252, 254, 255, 0.7);
+$white-60: rgba(252, 254, 255, 0.6);
+$white-50: rgba(252, 254, 255, 0.5);
+$white-40: rgba(252, 254, 255, 0.4);
+$white-30: rgba(252, 254, 255, 0.3);
+$white-20: rgba(252, 254, 255, 0.2);
+$white-10: rgba(252, 254, 255, 0.1);
+
+// Fonts family
+$font-title: "Geologica", sans-serif;
+$font-corps: "Noto Sans", sans-serif;
+
+// Font weights
+$font-w-100: 100;
+$font-w-200: 200;
+$font-w-300: 300;
+$font-w-400: 400;
+$font-w-500: 500;
+$font-w-600: 600;
+$font-w-700: 700;
+$font-w-800: 800;
+$font-w-900: 900;
+
+// Font sizes
+$font-s-body: clamp(1rem, 1vw + 0.5rem, 1.2rem);
+$font-s-h1: clamp(2rem, 2.5vw + 1rem, 3rem);
+$font-s-h2: clamp(1.75rem, 2vw + 0.875rem, 2.5rem);
+$font-s-h3: clamp(1.5rem, 1.5vw + 0.75rem, 2rem);
+$font-s-h4: clamp(1.25rem, 1.25vw + 0.625rem, 1.75rem);
+$font-s-h5: clamp(1rem, 1vw + 0.5rem, 1.5rem);
+$font-s-h6: clamp(0.875rem, 0.875vw + 0.4375rem, 1.25rem);
+
+// Sizes
+$size-0: 0rem;
+$size-2: 0.125rem;
+$size-4: 0.25rem;
+$size-5: 0.3125rem;
+$size-6: 0.375rem;
+$size-8: 0.5rem;
+$size-10: 0.625rem;
+$size-12: 0.75rem;
+$size-13: 0.8125rem;
+$size-14: 0.875rem;
+$size-15: 0.9375rem;
+$size-16: 1rem;
+$size-18: 1.125rem;
+$size-20: 1.25rem;
+$size-22: 1.375rem;
+$size-24: 1.5rem;
+$size-26: 1.625rem;
+$size-28: 1.75rem;
+$size-30: 1.875rem;
+$size-32: 2rem;
+$size-40: 2.5rem;
+$size-60: 3.75rem;
+$size-75: 4.6875rem;
+$size-50: 3.125rem;
+$size-80: 5rem;
+$size-85: 5.3125rem;
+$size-100: 6.25rem;
+$size-1280: 80rem;
+$size-50-pct: 50%;
+
+// Linear gradient
+$linear-gradient: linear-gradient(180deg, $orange-25 0%, $orange-25 100%);
+
+// Blur
+$blur: blur(0.3rem);

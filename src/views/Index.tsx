@@ -1,15 +1,15 @@
-import "../assets/styles/global.css";
-import styles from "../styles/Index.module.css";
-import Button from "../views/Button";
-// import CoinWallet from "./assets/images/svg/wallet/wallet-cat__full.svg";
-import Chart from "../views/Chart";
+import React from "react";
+import { Button } from "../components/Button";
+import { Chart } from "../components/Chart";
+import CoinWallet from "../assets/images/svg/wallet/wallet-cat__full.svg";
+import "../styles/Index.scss";
 
-function Home() {
+const Home: React.FC = () => {
     return (
-        <div className={styles.homepageWrapper}>
-            <section className={styles.heroWrapper}>
-                <div className={styles.heroContent}>
-                    <div className={styles.heroText}>
+        <div className="homepageWrapper">
+            <section className="heroWrapper">
+                <div className="heroContent">
+                    <div className="heroText">
                         <h1>
                             Le <span>chat</span> qui bâtit ton{" "}
                             <span>trésor</span> une <span>pelle</span> à la fois
@@ -25,40 +25,40 @@ function Home() {
                         <div className="eclipse"></div>
                     </div>
                     <div className="hero-image">
-                        {/* <Image src={CoinWallet} alt="Coin Wallet"></Image> */}
+                        <img src={CoinWallet} alt="Coin Wallet"></img>
                     </div>
                 </div>
-                <div className={styles.heroBottom}>
-                    {/* <div className={styles.heroBar}>
+                <div className="heroBottom">
+                    {/* <div className="heroBar">
                         <span>Transparence</span>
-                        <div className={styles.heroBarDot}></div>
+                        <div className="heroBarDot"></div>
                         <span>Décentralisation</span>
-                        <div className={styles.heroBarDot}></div>
+                        <div className="heroBarDot"></div>
                         <span>Sécurité</span>
                     </div> */}
-                    <div className={styles.heroAnchor}>
+                    <div className="heroAnchor">
                         <span>Découvrir</span>
-                        <div className={styles.heroArrow}>
-                            <div className={styles.heroDotArrow}></div>
+                        <div className="heroArrow">
+                            <div className="heroDotArrow"></div>
                         </div>
                     </div>
                 </div>
             </section>
-            <section className={styles.chartWrapper}>
+            <section className="chartWrapper">
                 <Chart />
             </section>
-            <section className={styles.gridWrapper}>
-                <div className={styles.gridLeft}></div>
-                <div className={styles.gridRight}>
-                    <div className={styles.gridTop}>
-                        <div className={styles.gridTopLeft}></div>
-                        <div className={styles.gridTopRight}></div>
+            <section className="gridWrapper">
+                <div className="gridLeft"></div>
+                <div className="gridRight">
+                    <div className="gridTop">
+                        <div className="gridTopLeft"></div>
+                        <div className="gridTopRight"></div>
                     </div>
-                    <div className={styles.gridBottom}></div>
+                    <div className="gridBottom"></div>
                 </div>
             </section>
         </div>
     );
-}
+};
 
-export default Home
+export default Home;

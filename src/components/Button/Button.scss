@@ -1,0 +1,40 @@
+@import "../../assets/styles/Variables";
+
+.btn {
+    display: flex;
+    padding: $size-14;
+    justify-content: center;
+    align-items: center;
+    gap: $size-8;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+    color: $white-100;
+    font-size: 1rem;
+    font-weight: $font-w-700;
+}
+
+.btnFull {
+    border-radius: $size-4;
+}
+
+.btnRound {
+    border-radius: $size-32;
+}
+
+.primary {
+    background: $orange-100;
+}
+
+.primary:hover {
+    background: $white-100;
+    color: $orange-100;
+}
+
+.secondary {
+    background: $grey-50;
+}
+
+.secondary:hover {
+    background: $white-100;
+}

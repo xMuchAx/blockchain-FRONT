@@ -1,5 +1,5 @@
 import React from "react";
-import "../styles/Button.css";
+import "./Button.scss";
 
 type ButtonProps = {
     variant: "primary" | "secondary";

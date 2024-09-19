@@ -1,33 +1,48 @@
-import React from 'react';
-import styles from './Dashboard.module.css';
-// import Coin from '../assets/images/png/coin/coin-cat__full.png';
+import React, { FC } from "react";
+import { Button } from "../components/Button";
+import { Historique } from "../components/Historique";
+import { ChangeCurrency } from "../components/ChangeCurrency";
 
-const Dashboard: React.FC = () => {
+import "../styles/Dashboard.scss";
+
+const Dashboard: FC = () => {
     return (
-        <section className={styles.dashboard}>
-            <div className={styles.left}>
-                <div className={styles.top}>
+        <section className="dashboardWrapper">
+            <div className="dashboard-left">
+                <div className="dashboard-top">
                     <h1>
-                        Bonjour, <span className={styles.colored}>Bob</span>
+                        Bonjour, <span className="colored">Bob</span>
                     </h1>
                     <p>Bienvenue sur votre portefeuille</p>
                 </div>
-                <div className={styles.bottom}>
-                    <p>Graphe</p>
+                <div className="dashboard-bottom">
+                    <strong>Graphe</strong>
                 </div>
             </div>
-            <div className={styles.right}>
-                <div className={styles.wallet}>
-                    <div>
-                        <strong>Portefeuille</strong>
-                        <p>MAJ à l’instant</p>
-                    </div>
-                    <div>
-                        <span>10</span>
-                        {/* <img src={Coin} alt="Pièce CAT²" className={styles.coinImage} /> */}
-                    </div>
+            <div className="dashboard-right">
+                <ChangeCurrency />
+                <div className="hist">
+                    <strong>Historique des transactions</strong>
+                    <ul>
+                        <Historique
+                            direction="up"
+                            id="324"
+                            recipient="Alice"
+                            amount={32}
+                            date="17/09/2024"
+                        />
+                        <Historique
+                            direction="down"
+                            id="324"
+                            recipient="Joe"
+                            amount={332}
+                            date="17/09/2028"
+                        />
+                    </ul>
+                    <Button variant="secondary" rounded={false}>
+                        Voir toutes les transactions
+                    </Button>
                 </div>
-                <div className={styles.transfert}></div>
             </div>
         </section>
     );

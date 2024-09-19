@@ -1,0 +1,63 @@
+@import "../../assets/styles/Variables";
+
+.header {
+    position: sticky;
+    top: $size-20;
+    max-width: calc(100% - $size-32);
+    height: 5rem;
+    width: $size-1280;
+    width: 100%;
+    margin: 0 auto;
+    background: $white-10;
+    border-radius: $size-75;
+    padding: $size-16 $size-30;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: $font-w-700;
+    font-family: $font-title;
+    color: $white-100;
+    z-index: 99;
+    backdrop-filter: $blur;
+
+    span {
+        font-size: $size-32;
+        position: absolute;
+        text-align: center;
+        left: $size-50-pct;
+        right: $size-50-pct;
+        transform: translate(-50%, -50%);
+    }
+
+    img {
+        width: $size-60;
+    }
+
+    .headerButton {
+        display: flex;
+        gap: $size-12;
+    }
+}
+
+@media (max-width: 768px) {
+    .header {
+        top: $size-32;
+
+        p {
+            display: none;
+        }
+    }
+}
+
+@media (max-width: 568px) {
+    .header {
+        img {
+            width: $size-32;
+        }
+
+        .btn-round {
+            font-size: $size-12;
+            padding: $size-8 $size-12;
+        }
+    }
+}

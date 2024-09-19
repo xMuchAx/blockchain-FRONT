@@ -1,12 +1,13 @@
 import React from "react";
+import "../styles/Login.scss";
 
-const Connexion: React.FC = () => {
-    return(
+const Login: React.FC = () => {
+    return (
         <div>
-            <h1> Connexion </h1>
-            <p>This is your connexion page</p>
+            <h1> Login </h1>
+            <p>This is your Login page</p>
         </div>
     );
 };
 
-export default Connexion;
+export default Login;

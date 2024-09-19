@@ -1,3 +1,5 @@
+@import "./Variables";
+
 * {
     margin: 0;
     padding: 0;
@@ -9,7 +11,7 @@ html,
 body {
     height: 100%;
     font-size: 100%;
-    font-family: sans-serif;
+    font-family: $font-corps;
 }
 
 body {
@@ -30,7 +32,7 @@ blockquote:before,
 blockquote:after,
 q:before,
 q:after {
-    content: '';
+    content: "";
     content: none;
 }
 
@@ -56,15 +58,39 @@ textarea {
     font-family: inherit;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
+h1 {
+    font-size: $font-s-h1;
+    color: $white-100;
+}
+
+h2 {
+    font-size: $font-s-h2;
+    color: $white-100;
+}
+
+h3 {
+    font-size: $font-s-h3;
+    color: $white-100;
+}
+
+h4 {
+    font-size: $font-s-h4;
+    color: $white-100;
+}
+
+h5 {
+    font-size: $font-s-h5;
+    color: $white-100;
+}
+
+h6 {
+    font-size: $font-s-h6;
+    color: $white-100;
+}
+
 p,
 blockquote {
     margin: 0;
     padding: 0;
-    color: var(--white-100);
+    color: $white-100;
 }

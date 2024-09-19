@@ -12,7 +12,7 @@ import {
     Legend,
 } from "chart.js";
 
-import "../styles/Chart.css";
+import "./Chart.scss";
 
 ChartJS.register(
     CategoryScale,
@@ -45,17 +45,27 @@ const Chart = () => {
                 labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"],
                 datasets: [
                     {
-                        label: "Dataset 1",
-                        data: [65, 59, 80, 81, 56, 55, 40],
+                        label: "Cat² vs Bitcoin",
+                        data: [
+                            0.005, 0.0045, 0.0048, 0.0052, 0.005, 0.0051,
+                            0.0049,
+                        ],
                         fill: false,
-                        borderColor: "rgba(75,192,192,1)",
+                        borderColor: "rgba(255,99,132,1)",
                         tension: 0.1,
                     },
                     {
-                        label: "Dataset 2",
-                        data: [28, 48, 40, 19, 86, 27, 90],
+                        label: "Cat² vs Dollar",
+                        data: [150, 160, 155, 170, 165, 180, 175],
                         fill: false,
-                        borderColor: "rgba(153,102,255,1)",
+                        borderColor: "rgba(54,162,235,1)",
+                        tension: 0.1,
+                    },
+                    {
+                        label: "Cat² vs Euro",
+                        data: [140, 150, 145, 160, 155, 170, 165],
+                        fill: false,
+                        borderColor: "rgba(75,192,192,1)",
                         tension: 0.1,
                     },
                 ],
@@ -74,7 +84,7 @@ const Chart = () => {
             },
             title: {
                 display: true,
-                text: "Line Chart Example",
+                text: "Évolution de Cat² par rapport à d'autres devises",
             },
         },
     };

@@ -1,0 +1,63 @@
+@import "./Variables";
+
+body {
+    font-size: $font-s-body;
+    font-family: $font-corps;
+    background-color: $black-100;
+    position: relative;
+    height: 100%;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: $font-title;
+    color: $white-100;
+}
+
+h1 {
+    font-size: $font-s-h1;
+}
+
+h2 {
+    font-size: $font-s-h2;
+}
+
+h3 {
+    font-size: $font-s-h3;
+}
+
+h4 {
+    font-size: $font-s-h4;
+}
+
+h5 {
+    font-size: $font-s-h5;
+}
+
+h6 {
+    font-size: $font-s-h6;
+}
+
+.eclipse {
+    width: 700px;
+    height: 1075.77px;
+    transform: rotate(75.387deg);
+    position: absolute;
+    z-index: -1;
+    left: 25%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: $size-50-pct;
+    background: $linear-gradient;
+    filter: blur(200px);
+}
+
+.mainWrapper {
+    // max-width: calc(100% - $size-32);
+    // width: $size-1280;
+    margin: -$size-80 auto 0 auto;
+}

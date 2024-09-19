@@ -1,0 +1,177 @@
+.dashboard {
+    padding: 5.3125rem 0 0 0;
+    margin: auto;
+    max-width: calc(100% - 32px);
+    width: var(--size-1280);
+    display: flex;
+    gap: var(--size-20);
+    .colored {
+        color: var(--orange-100);
+    }
+    .left {
+        width: 65%;
+    }
+}
+
+.dashboard > div {
+    display: flex;
+    gap: var(--size-20);
+    flex-direction: column;
+}
+
+.dashboard > div > div {
+    background-color: var(--white-10);
+    padding: var(--size-24);
+    border-radius: var(--size-8);
+    color: var(--white-100);
+}
+
+.dashboard > .left .top {
+    padding: 0;
+    background-color: transparent;
+}
+
+.dashboard > .left .top p {
+    color: var(--grey-100);
+    font-size: var(--size-12);
+    font-weight: var(--font-w-400);
+    margin: 16px 0 0 0;
+}
+.dashboard > .left .bottom strong {
+    font-size: var(--size-14);
+}
+.dashboard > .right {
+    flex: 2;
+}
+.dashboard > .right .send {
+    display: flex;
+    gap: var(--size-10);
+    margin: var(--size-24) 0 0 0;
+}
+.dashboard > .right .send button {
+    font-size: var(--size-14);
+    padding: var(--size-12) var(--size-14);
+    flex: 1;
+    white-space: nowrap;
+}
+.wallet {
+    display: flex;
+    justify-content: space-between;
+}
+.wallet strong {
+    font-size: var(--size-16);
+    font-weight: var(--font-w-700);
+}
+.wallet p {
+    font-size: var(--size-10);
+    font-weight: var(--font-w-300);
+    color: var(--grey-100);
+    margin: var(--size-4) 0 0 0;
+}
+.piece {
+    width: var(--size-26);
+}
+.wallet > div:last-child {
+    display: flex;
+    align-items: center;
+    gap: var(--size-10);
+}
+
+.dashboard > .right hr {
+    margin: var(--size-16) auto;
+    color: var(--grey-100);
+    opacity: 0.4;
+}
+.transfert {
+    display: flex;
+    flex-direction: column;
+    border-radius: var(--size-8);
+    overflow: hidden;
+    background-color: var(--grey-50);
+}
+.transfert > div:first-child {
+    padding: var(--size-8) var(--size-12);
+    background: var(--grey-50);
+    display: flex;
+    position: relative;
+}
+.transfert > div:first-child:after {
+    content: "";
+    width: 6px;
+    height: 6px;
+    border: 2px solid var(--white-100);
+    border-radius: 1px 1px 1px;
+    border-top: 0;
+    border-left: 0;
+    transform: rotate(45deg);
+    transition: transform 0.3s;
+    position: absolute;
+    right: var(--size-12);
+    top: 0;
+    bottom: 0;
+    margin: auto;
+}
+.transfert select {
+    color: var(--white-100);
+    font-weight: var(--font-w-700);
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    border: 0;
+    appearance: none;
+    background-color: transparent;
+    font-size: var(--size-16);
+    flex: 2;
+    cursor: pointer;
+}
+.transfert > div:last-child {
+    padding: var(--size-12) var(--size-24);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.transfert > div:last-child .deviseCat {
+    display: flex;
+    gap: var(--size-10);
+    align-items: center;
+}
+.flagUs {
+    width: var(--size-20);
+    height: var(--size-20);
+    display: block;
+    background: url(https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/US_flag_49_stars.svg/1280px-US_flag_49_stars.svg.png);
+    background-size: cover;
+    border-radius: 50%;
+    margin: 0 var(--size-10) 0 0;
+}
+.hist {
+    display: flex;
+    flex-direction: column;
+    gap: var(--size-24);
+}
+.hist > strong {
+    font-size: var(--size-16);
+}
+.hist > ul {
+    display: flex;
+    flex-direction: column;
+}
+.hist > ul li {
+    display: flex;
+    justify-content: space-between;
+    font-size: var(--size-12);
+    flex: 1;
+    padding: var(--size-10) 0;
+    border-bottom: 1px solid var(--grey-10);
+}
+.hist > ul li:first-of-type {
+    border-top: 1px solid var(--grey-10);
+}
+.hist > ul li p {
+    font-size: var(--size-10);
+    color: var(--grey-100);
+    margin: var(--size-4) 0 0 0;
+}
+.hist > ul li span {
+    color: var(--orange-100);
+    margin: 0 0 0 var(--size-4);
+}

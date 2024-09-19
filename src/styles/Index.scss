@@ -1,0 +1,120 @@
+@import "../assets/styles/Variables";
+
+.homepageWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: $size-50;
+    max-width: calc(100% - $size-32);
+    width: $size-1280;
+    margin: 0 auto;
+    .heroWrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        height: 100vh;
+        padding-block-start: 150px;
+        .heroContent {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            .heroText {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: $size-30;
+                position: relative;
+                h1 {
+                    span {
+                        color: $orange-100;
+                    }
+                }
+            }
+        }
+        .heroBottom {
+            display: flex;
+            padding-block-end: $size-50;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: $size-100;
+            align-self: stretch;
+            .heroBar {
+                display: flex;
+                padding: $size-20 $size-50;
+                justify-content: center;
+                align-items: center;
+                gap: $size-50;
+                border-radius: $size-50;
+                background-color: $white-10;
+                span {
+                    text-transform: uppercase;
+                    font-weight: $font-w-700;
+                    color: $white-100;
+                    font-size: $size-14;
+                }
+                .heroBarDot {
+                    display: flex;
+                    width: $size-10;
+                    height: $size-10;
+                    flex-direction: column;
+                    align-items: flex-start;
+                    gap: $size-10;
+                    border-radius: $size-50-pct;
+                    background-color: $white-20;
+                }
+            }
+            .heroAnchor {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: $size-20;
+                span {
+                    text-transform: uppercase;
+                    color: $white-100;
+                    font-weight: $font-w-700;
+                    font-size: $size-12;
+                }
+                .heroArrow {
+                    display: flex;
+                    width: $size-30;
+                    height: $size-50;
+                    padding: $size-10;
+                    justify-content: center;
+                    align-items: flex-start;
+                    gap: $size-10;
+                    border-radius: $size-20;
+                    border: 1px solid $white-100;
+                    .heroDotArrow {
+                        display: flex;
+                        width: $size-5;
+                        height: $size-5;
+                        flex-direction: column;
+                        justify-content: center;
+                        align-items: flex-start;
+                        border-radius: $size-50-pct;
+                        background: $white-100;
+                        animation: bounce 2.5s ease-in-out infinite;
+                    }
+                }
+            }
+        }
+    }
+    .chartWrapper {
+        width: 100%;
+        padding: $size-50;
+        border-radius: $size-8;
+        background-color: $white-10;
+    }
+}
+
+@keyframes bounce {
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(24px);
+    }
+}
