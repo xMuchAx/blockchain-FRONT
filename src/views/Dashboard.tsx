@@ -3,7 +3,9 @@ import { Button } from "../components/Button";
 import { Historique } from "../components/Historique";
 import { ChangeCurrency } from "../components/ChangeCurrency";
 
+
 import "../styles/Dashboard.scss";
+import { Chart } from "../components/Chart";
 
 const Dashboard: FC = () => {
     return (
@@ -16,7 +18,7 @@ const Dashboard: FC = () => {
                     <p>Bienvenue sur votre portefeuille</p>
                 </div>
                 <div className="dashboard-bottom">
-                    <strong>Graphe</strong>
+                    <Chart />
                 </div>
             </div>
             <div className="dashboard-right">
@@ -35,7 +37,7 @@ const Dashboard: FC = () => {
                             direction="down"
                             id="324"
                             recipient="Joe"
-                            amount={332}
+                            amount={-332}
                             date="17/09/2028"
                         />
                     </ul>
@@ -44,6 +46,7 @@ const Dashboard: FC = () => {
                     </Button>
                 </div>
             </div>
+            <div className="eclipse"></div>
         </section>
     );
 };

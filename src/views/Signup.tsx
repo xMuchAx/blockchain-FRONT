@@ -10,6 +10,7 @@ const Signup: React.FC = () => {
         <section className="inscription_page">
             <div className="left">
                 <img src={CoinWallet} alt="CoinWallet" />
+                <div className="eclipse"></div>
             </div>
 
             <div className="right">
@@ -18,7 +19,6 @@ const Signup: React.FC = () => {
                     <span>CAT²</span>, le chat qui bâtit ton trésor
                 </h1>
                 <div className="form-wrapper">
-
                     <Form mode="register"/>
 
                     <div className="link">
