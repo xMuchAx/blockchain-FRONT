@@ -18,7 +18,7 @@ const Signup: React.FC = () => {
                 <h1>
                     <span>CAT²</span>, le chat qui batit ton trésor
                 </h1>
-                <div>
+                <div className="form-wrapper">
                     <form>
                         <div className="formGroup">
                             <label htmlFor="Username">Nom d'utilisateur</label>
@@ -30,24 +30,25 @@ const Signup: React.FC = () => {
                             />
                         </div>
 
-                        <div className="formGroup">
-                            <label htmlFor="email">Email</label>
-                            <input
-                                type="email"
-                                placeholder="Entrez votre adresse mail"
-                                id="email"
-                                name="email"
-                            />
-                        </div>
-
-                        <div className="formGroup">
-                            <label htmlFor="password">Mot de passe</label>
-                            <input
-                                type="password"
-                                placeholder="Entrez votre mot de passe"
-                                id="password"
-                                name="password"
-                            />
+                        <div className="key">
+                            <div className="formGroup">
+                                <label htmlFor="email">Email</label>
+                                <input
+                                    type="email"
+                                    placeholder="Entrez votre adresse mail"
+                                    id="email"
+                                    name="email"
+                                />
+                            </div>
+                            <div className="formGroup">
+                                <label htmlFor="password">Mot de passe</label>
+                                <input
+                                    type="password"
+                                    placeholder="Entrez votre mot de passe"
+                                    id="password"
+                                    name="password"
+                                />
+                            </div>
                         </div>
                         <div className="key">
                             <div className="formGroup">
@@ -86,7 +87,7 @@ const Signup: React.FC = () => {
                         </div>
                     </form>
                     <div className="link">
-                        <span>Déjà un compte?</span>
+                        <span>Déjà un compte ?</span>
                         <Link to="/login">Connectez-vous</Link>
                     </div>
                 </div>

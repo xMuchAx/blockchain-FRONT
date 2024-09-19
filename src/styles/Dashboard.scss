@@ -1,3 +1,5 @@
+@import "../assets/styles/Variables";
+
 .dashboard {
     padding: 5.3125rem 0 0 0;
     margin: auto;
@@ -140,7 +142,7 @@
     display: block;
     background: url(https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/US_flag_49_stars.svg/1280px-US_flag_49_stars.svg.png);
     background-size: cover;
-    border-radius: 50%;
+    border-radius: $size-50-pct;
     margin: 0 var(--size-10) 0 0;
 }
 .hist {
