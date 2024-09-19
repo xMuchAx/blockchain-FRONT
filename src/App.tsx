@@ -11,8 +11,7 @@ import Signup from "./views/Signup";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import Dashboard from "./views/Dashboard";
-
-// Styles
+import { AuthProvider } from "./utils/authContext";
 import "./assets/styles/Main.scss";
 
 const App: React.FC = () => {
@@ -22,7 +21,7 @@ const App: React.FC = () => {
         location.pathname === "/login" || location.pathname === "/signup";
 
     return (
-        <>
+        <AuthProvider>
             {!hidingComponent && <Header />}
             <main className="mainWrapper">
                 <Routes>
@@ -33,8 +32,8 @@ const App: React.FC = () => {
                 </Routes>
             </main>
             {!hidingComponent && <Footer />}
-        </>
-    );
+        </AuthProvider>
+        );
 };
 
 const AppWrapper: React.FC = () => {
