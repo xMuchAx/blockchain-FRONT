@@ -1,6 +1,5 @@
 @import "../assets/styles/Variables";
-@import "../components/ChangeCurrency/ChangeCurrency.scss";
-@import "../components/Historique/Historique.scss";
+
 .dashboardWrapper {
     padding: 5.3125rem 0 0 0;
     margin: auto;
@@ -57,124 +56,8 @@
     flex: 1;
     white-space: nowrap;
 }
-.wallet {
-    display: flex;
-    justify-content: space-between;
-}
-.wallet strong {
-    font-size: $size-16;
-    font-weight: $font-w-700;
-}
-.wallet p {
-    font-size: $size-10;
-    font-weight: $font-w-300;
-    color: $grey-100;
-    margin: $size-4 0 0 0;
-}
-.piece {
-    width: $size-26;
-}
-.wallet > div:last-child {
-    display: flex;
-    align-items: center;
-    gap: $size-10;
-}
-
 .dashboardWrapper > .dashboard-right hr {
     margin: $size-16 auto;
     color: $grey-100;
     opacity: 0.4;
-}
-.transfert {
-    display: flex;
-    flex-direction: column;
-    border-radius: var(--size-8);
-    overflow: hidden;
-    background-color: var(--grey-50);
-}
-.transfert > div:first-child {
-    padding: var(--size-8) var(--size-12);
-    background: var(--grey-50);
-    display: flex;
-    position: relative;
-}
-.transfert > div:first-child:after {
-    content: "";
-    width: 6px;
-    height: 6px;
-    border: 2px solid var(--white-100);
-    border-radius: 1px 1px 1px;
-    border-top: 0;
-    border-left: 0;
-    transform: rotate(45deg);
-    transition: transform 0.3s;
-    position: absolute;
-    right: var(--size-12);
-    top: 0;
-    bottom: 0;
-    margin: auto;
-}
-.transfert select {
-    color: var(--white-100);
-    font-weight: var(--font-w-700);
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    border: 0;
-    appearance: none;
-    background-color: transparent;
-    font-size: var(--size-16);
-    flex: 2;
-    cursor: pointer;
-}
-.transfert > div:last-child {
-    padding: var(--size-12) var(--size-24);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-.transfert > div:last-child .deviseCat {
-    display: flex;
-    gap: var(--size-10);
-    align-items: center;
-}
-.flagUs {
-    width: var(--size-20);
-    height: var(--size-20);
-    display: block;
-    background: url(https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/US_flag_49_stars.svg/1280px-US_flag_49_stars.svg.png);
-    background-size: cover;
-    border-radius: 50%;
-    margin: 0 var(--size-10) 0 0;
-}
-.hist {
-    display: flex;
-    flex-direction: column;
-    gap: $size-24;
-}
-.hist > strong {
-    font-size: $size-16;
-}
-.hist > ul {
-    display: flex;
-    flex-direction: column;
-}
-.hist > ul li {
-    display: flex;
-    justify-content: space-between;
-    font-size: $size-12;
-    flex: 1;
-    padding: $size-10 0;
-    border-bottom: 1px solid $grey-10;
-}
-.hist > ul li:first-of-type {
-    border-top: 1px solid $grey-10;
-}
-.hist > ul li p {
-    font-size: $size-10;
-    color: $grey-100;
-    margin: $size-4 0 0 0;
-}
-.hist > ul li span {
-    color: $orange-100;
-    margin: 0 0 0 $size-4;
 }
