@@ -7,7 +7,7 @@ import "./ChangeCurrency.scss";
 
 const ChangeCurrency: React.FC = () => {
     return (
-        <div>
+        <div className="transfert">
             <div>
                 <div>
                     <strong>Portefeuille</strong>
