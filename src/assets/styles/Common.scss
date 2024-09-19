@@ -50,10 +50,10 @@ h6 {
 .eclipse {
     width: 700px;
     height: 1075.77px;
-    transform: rotate(75.387deg);
+    transform: rotate(90deg);
     position: absolute;
     z-index: -1;
-    left: 25%;
+    left: $size-50-pct;
     top: $size-50-pct;
     transform: translate(-$size-50-pct, -$size-50-pct);
     border-radius: $size-50-pct;
