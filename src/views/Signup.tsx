@@ -52,12 +52,12 @@ const Signup: React.FC = () => {
             </div>
 
             <div className="right">
-                <img src={Logo} alt="Logo" />
+                <img src={Logo} alt="Logo"></img>
                 <h1>
-                    <span>CAT²</span>, le chat qui bâtit ton trésor
+                    <span>CAT²</span>, le chat qui batit ton trésor
                 </h1>
                 <div className="form-wrapper">
-                    <form onSubmit={ClickAuth}>
+                    <form>
                         <div className="formGroup">
                             <label htmlFor="Username">Nom d'utilisateur</label>
                             <input
@@ -65,8 +65,6 @@ const Signup: React.FC = () => {
                                 placeholder="Entrez votre nom d'utilisateur"
                                 id="Username"
                                 name="Username"
-                                value={username}
-                                onChange={(e) => setUsername(e.target.value)}
                             />
                         </div>
 
@@ -122,20 +120,21 @@ const Signup: React.FC = () => {
                             <p>J'accepte les conditions générales d'utilisations...</p>
                         </div>
 
-                        <div className="button">
-                            <Button variant="primary" rounded={false}>
-                                S'inscrire
-                            </Button>
-                        </div>
-                    </form>
-                    <div className="link">
-                        <span>Déjà un compte ?</span>
-                        <Link to="/login">Connectez-vous</Link>
-                    </div>
-                </div>
+            <div className="button">
+              <Button variant="primary" rounded={false}>
+                S'inscrire
+              </Button>
             </div>
-        </section>
-    );
+          </form>
+
+          <div className="link">
+            <span>Déjà un compte ?</span>
+            <Link to="/login">Connectez-vous</Link>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
 };
 
 export default Signup;

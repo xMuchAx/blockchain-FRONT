@@ -20,14 +20,16 @@ const Historique: FC<HistoriqueProps> = ({
 }) => {
     return (
         <li className={direction === "up" ? "up" : "down"}>
-            <div>
+            <div className="transact">
                 {direction === "up" ? (
                     <TrendUp size={21} color="#00a478" />
                 ) : (
                     <TrendDown size={21} color="#F64C02" />
                 )}
-                <strong>Transaction #{id}</strong>
-                <p>Reçu par {recipient}</p>
+                <div>
+                    <strong>Transaction #{id}</strong>
+                    <p>Reçu par {recipient}</p>
+                </div>
             </div>
             <div>
                 <strong>
