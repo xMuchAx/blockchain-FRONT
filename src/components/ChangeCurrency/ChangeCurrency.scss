@@ -78,3 +78,16 @@
 .piece {
     width: $size-26;
 }
+.Modal{
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    margin: auto;
+    width: fit-content;
+    height: fit-content;
+    background-color: $white-10;
+    border-radius: $size-8;
+    padding: $size-24;
+}
