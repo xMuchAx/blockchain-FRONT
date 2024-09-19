@@ -31,7 +31,6 @@ const Form: React.FC<FormProps> = ({ mode }) => {
             email:email,
             password:password
         };
-        console.log(data)
 
         try {
             const response = mode === "register" ?  await callApi(UrlsApi.register,'POST', data) : await callApi(UrlsApi.login,'POST',data);
@@ -42,7 +41,7 @@ const Form: React.FC<FormProps> = ({ mode }) => {
 
             if (token) {
                 login(token, email);
-                navigate('/home');  
+                navigate('/dashboard');  
             }
 
         } catch (error) {
