@@ -120,7 +120,13 @@ const Signup: React.FC = () => {
                         </div>
 
                         <div className="conditions">
-                            <p>J'accepte les conditions générales d'utilisation...</p>
+                        <input
+                            type="checkbox"
+                            id="checkbox"
+                            />
+                        <label htmlFor="checkbox">
+                            J'accepte les conditions générales d'utilisation...
+                        </label>
                         </div>
 
                         <div className="button">
