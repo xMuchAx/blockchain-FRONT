@@ -4,6 +4,16 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     align-items: center;
+    height: 100%;
+}
+
+.left {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    img {
+        width: $size-50-pct;
+    }
 }
 
 .right {
@@ -17,6 +27,8 @@
     backdrop-filter: blur($size-2);
     display: flex;
     align-items: center;
+    justify-content: center;
+    gap: $size-30;
 }
 
 .right > div {
@@ -32,60 +44,72 @@
     width: 100%;
     font-family: $font-title;
     font-size: $size-30;
-    margin-top: $size-50;
-    margin-bottom: $size-30;
+    text-align: center;
+}
+
+.form-wrapper {
+    display: flex;
+    align-items: center;
     justify-content: center;
-}
-
-.link span {
-    color: $orange-100;
-}
-
-.link p {
-    color: $white-100;
-    font-style: italic;
-}
-
-.right form {
-    display: flex;
+    flex-direction: column;
     gap: $size-20;
-    flex-direction: column;
-}
-
-.formGroup {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    align-self: stretch;
-    color: $white-100;
-    gap: $size-8;
-    label {
+    width: 100%;
+    form {
         display: flex;
+        gap: $size-20;
         flex-direction: column;
-        align-items: flex-start;
-        flex: 1 0 0;
-        color: $white-100;
-        font-family: $font-title;
-        font-size: $size-15;
-        font-style: normal;
-        font-weight: 500;
-        line-height: normal;
-        letter-spacing: -0.3px;
-    }
-
-    input {
-        display: flex;
-        height: $size-40;
-        padding: $size-12 $size-10;
-        justify-content: space-between;
-        align-items: center;
-        align-self: stretch;
         width: 100%;
-        border-radius: $size-4;
-        border: 0.5px solid $white-50;
-        background: transparent;
-        &:focus {
-            outline: none;
+        .formGroup {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            align-self: stretch;
+            color: $white-100;
+            gap: $size-8;
+            label {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                flex: 1 0 0;
+                color: $white-100;
+                font-family: $font-title;
+                font-size: $size-15;
+                font-style: normal;
+                font-weight: 500;
+                line-height: normal;
+                letter-spacing: -0.3px;
+            }
+
+            input {
+                display: flex;
+                height: $size-40;
+                padding: $size-12 $size-10;
+                justify-content: space-between;
+                align-items: center;
+                align-self: stretch;
+                width: 100%;
+                border-radius: $size-4;
+                border: 0.5px solid $white-50;
+                background: transparent;
+                &:focus {
+                    outline: none;
+                }
+            }
+        }
+    }
+    .link {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: $size-4;
+        font-size: $size-14;
+        span {
+            color: $white-100;
+        }
+        a {
+            color: $orange-100;
+            font-weight: $font-w-700;
+            text-decoration: underline;
         }
     }
 }
