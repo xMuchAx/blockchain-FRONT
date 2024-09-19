@@ -1,85 +1,156 @@
 @import "../../assets/styles/Variables.scss";
+
+.transfert-wallet {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: $size-8;
+    width: 100%;
+    height: 100%;
+}
+
 .transfert {
     display: flex;
     flex-direction: column;
     border-radius: $size-8;
-    overflow: hidden;
     background-color: $grey-50;
-    > div:first-child {
+    width: 100%;
+
+    .transfert-input {
         padding: $size-8 $size-12;
         background: $grey-50;
         display: flex;
+        align-items: center;
+        gap: $size-8;
         position: relative;
-        &:after {
-            content: "";
-            width: 6px;
-            height: 6px;
-            border: 2px solid $white-100;
-            border-radius: 1px 1px 1px;
-            border-top: 0;
-            border-left: 0;
-            transform: rotate(45deg);
-            transition: transform 0.3s;
-            position: absolute;
-            right: $size-12;
-            top: 0;
-            bottom: 0;
-            margin: auto;
-        }
+        border-radius: $size-8 $size-8 $size-0 $size-0;
     }
-    select {
-        color: $white-100;
-        font-weight: $font-w-700;
-        appearance: none;
-        border: 0;
-        background-color: transparent;
-        font-size: $size-16;
-        flex: 2;
-        cursor: pointer;
-        -webkit-appearance: none;
-        -moz-appearance: none;
-    }
-    > div:last-child {
-        padding: $size-12 $size-24;
+
+    .transfert-output {
+        padding: $size-12;
         display: flex;
         align-items: center;
         justify-content: space-between;
+        font-weight: $font-w-700;
+        position: relative;
+
         .deviseCat {
             display: flex;
             gap: $size-10;
             align-items: center;
         }
-    }
-}
-.flagUs {
-    width: $size-20;
-    height: $size-20;
-    background: url("https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/US_flag_49_stars.svg/1280px-US_flag_49_stars.svg.png")
-        no-repeat center center;
-    background-size: cover;
-    border-radius: 50%;
-    margin-right: $size-10;
-}
-.wallet {
-    display: flex;
-    justify-content: space-between;
-    strong {
-        font-size: $size-16;
-        font-weight: $font-w-700;
+
+        .transfert-arrow {
+            position: absolute;
+            left: $size-50-pct;
+            top: $size-50-pct;
+            transform: translate(-$size-50-pct, -$size-50-pct);
+        }
     }
 
-    p {
-        font-size: $size-10;
-        font-weight: $font-w-300;
-        color: $grey-100;
-        margin-top: $size-4;
+    .MuiAutocomplete-root {
+        background-color: transparent;
+        color: $white-100;
+        font-size: $size-14;
+        border-radius: $size-4;
+        width: 100%;
+        flex-grow: 1;
     }
-    > div:last-child {
+
+    .MuiAutocomplete-root .MuiOutlinedInput-root {
+        padding: 0;
+    }
+
+    .MuiInputBase-input {
+        padding: $size-4 $size-8;
+        font-size: $size-12;
+    }
+}
+
+.transfert-flag {
+    width: $size-20;
+    height: $size-20;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: $size-50-pct;
+    flex-shrink: 0;
+}
+
+.flag-us {
+    background-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/US_flag_49_stars.svg/1280px-US_flag_49_stars.svg.png");
+}
+
+.flag-eur {
+    background-image: url("https://upload.wikimedia.org/wikipedia/commons/b/b7/Flag_of_Europe.svg");
+}
+
+.flag-gbp {
+    background-image: url("https://upload.wikimedia.org/wikipedia/en/a/ae/Flag_of_the_United_Kingdom.svg");
+}
+
+.flag-jpy {
+    background-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Flag_of_Japan.svg/30px-Flag_of_Japan.svg.png");
+}
+
+.wallet {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+
+    .wallet-details {
+        display: flex;
+        flex-direction: column;
+        gap: $size-6;
+
+        strong {
+            font-size: $size-16;
+            font-weight: $font-w-700;
+        }
+
+        p {
+            font-size: $size-12;
+            font-weight: $font-w-300;
+            color: $grey-100;
+        }
+    }
+
+    .wallet-amount {
         display: flex;
         align-items: center;
         gap: $size-10;
     }
 }
+
 .piece {
     width: $size-26;
+}
+
+.Modal {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    margin: auto;
+    width: fit-content;
+    height: fit-content;
+    background-color: $white-15;
+    border-radius: $size-8;
+    padding: $size-24;
+    &:focus-visible {
+        outline: none;
+    }
+}
+
+.MuiModal-backdrop {
+    background-color: rgba(0, 0, 0, 0.75) !important;
+}
+
+.send-buttons {
+    display: flex;
+    gap: $size-10;
+    margin-top: $size-16;
 }

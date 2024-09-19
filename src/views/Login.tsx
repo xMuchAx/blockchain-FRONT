@@ -16,9 +16,10 @@ const Login: React.FC = () => {
         console.log("Données de connexion", data);
     };
     return (
-        <section className="inscription_page">
+        <section className="inscription_page login">
             <div className="left">
                 <img src={CoinWallet} alt="CoinWallet"></img>
+                <div className="eclipse"></div>
             </div>
 
             <div className="right">
@@ -30,7 +31,7 @@ const Login: React.FC = () => {
                     <Form formType="login" onSubmit={handleLogin} />
                     <div className="link">
                         <span>Pas encore de compte ?</span>
-                        <Link to="/login">Créez un compte</Link>
+                        <Link to="/signup">Créez un compte</Link>
                     </div>
                 </div>
             </div>

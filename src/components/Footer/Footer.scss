@@ -9,7 +9,7 @@
     justify-content: space-between;
     align-items: center;
     font-size: $size-16;
-    padding: $size-16;
+    padding-block: $size-32;
     p {
         font-size: $size-12;
     }
@@ -21,7 +21,7 @@
         cursor: pointer;
         display: flex;
         align-items: center;
-        gap: 10px;
+        gap: $size-10;
     }
     ul li:not(:last-child)::after {
         content: "";
