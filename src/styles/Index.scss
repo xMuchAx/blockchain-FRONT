@@ -112,6 +112,62 @@
         border-radius: $size-8;
         background-color: $white-10;
     }
+    .gridWrapper {
+        display: grid;
+        width: 100%;
+        gap: $size-30;
+        grid-template-columns: repeat(2, 1fr);
+        .gridLeft {
+            background-color: red;
+            border-radius: $size-16;
+            padding: $size-40;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: $size-16;
+        }
+        .gridRight {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            gap: $size-30;
+            flex: 1 0 0;
+            align-self: stretch;
+            .gridTop {
+                display: flex;
+                align-items: flex-start;
+                align-content: flex-start;
+                gap: 30px;
+                flex: 1 0 0;
+                align-self: stretch;
+                flex-wrap: wrap;
+                .gridTopLeft,
+                .gridTopRight {
+                    display: flex;
+                    height: 210px;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    gap: 10px;
+                    flex: 1 0 0;
+                    border-radius: 8px;
+                    background: rgba(252, 254, 255, 0.1);
+                }
+            }
+            .gridBottom {
+                display: flex;
+                height: 210px;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 10px;
+                flex: 1 0 0;
+                border-radius: 8px;
+                background: rgba(252, 254, 255, 0.1);
+            }
+        }
+    }
 }
 
 @keyframes bounce {

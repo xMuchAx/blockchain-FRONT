@@ -25,7 +25,7 @@ const Home: React.FC = () => {
                         <div className="eclipse"></div>
                     </div>
                     <div className="hero-image">
-                        <img src={CoinWallet} alt="CoinWallet"></img>
+                        <img src={CoinWallet} alt="Coin Wallet"></img>
                     </div>
                 </div>
                 <div className="heroBottom">
@@ -48,13 +48,48 @@ const Home: React.FC = () => {
                 <Chart />
             </section>
             <section className="gridWrapper">
-                <div className="gridLeft"></div>
+                <div className="gridLeft">
+                    <h2>Transparence, Décentralisation et Sécurité</h2>
+                    <p>
+                        CAT² est une monnaie numérique innovante, conçue pour
+                        garantir transparence, décentralisation, et sécurité sur
+                        la blockchain Ethereum. Grâce à ERC-1155 d'OpenZeppelin,
+                        chaque transaction est claire et accessible, permettant
+                        à tous les utilisateurs de suivre en temps réel
+                        l’évolution de leurs actifs. La décentralisation de CAT²
+                        élimine les intermédiaires, offrant aux utilisateurs un
+                        contrôle direct et sécurisé de leurs tokens. Avec
+                        Hardhat Ignition pour le déploiement des smart contracts
+                        et Ethers.js pour les interactions blockchain, CAT²
+                        assure une infrastructure robuste et sûre, protégeant
+                        les actifs de ses utilisateurs tout en garantissant une
+                        autonomie totale.
+                    </p>
+                </div>
                 <div className="gridRight">
                     <div className="gridTop">
-                        <div className="gridTopLeft"></div>
-                        <div className="gridTopRight"></div>
+                        <div className="gridTopLeft">
+                            <p>
+                                La décentralisation de CAT² élimine les
+                                intermédiaires, offrant aux utilisateurs un
+                                contrôle direct et sécurisé de leurs tokens.
+                            </p>
+                        </div>
+                        <div className="gridTopRight">
+                            <p>
+                                La décentralisation de CAT² élimine les
+                                intermédiaires, offrant aux utilisateurs un
+                                contrôle direct et sécurisé de leurs tokens.
+                            </p>
+                        </div>
                     </div>
-                    <div className="gridBottom"></div>
+                    <div className="gridBottom">
+                        <p>
+                            La décentralisation de CAT² élimine les
+                            intermédiaires, offrant aux utilisateurs un contrôle
+                            direct et sécurisé de leurs tokens.
+                        </p>
+                    </div>
                 </div>
             </section>
         </div>
