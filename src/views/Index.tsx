@@ -25,7 +25,7 @@ const Home: React.FC = () => {
                         <div className="eclipse"></div>
                     </div>
                     <div className="hero-image">
-                        <img src={CoinWallet} alt="Coin Wallet"></img>
+                        <img src={CoinWallet} alt="CoinWallet"></img>
                     </div>
                 </div>
                 <div className="heroBottom">
