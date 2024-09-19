@@ -1,0 +1,42 @@
+@import "../../assets/styles/Variables.scss";
+.hist {
+    display: flex;
+    flex-direction: column;
+    gap: $size-24;
+    > strong {
+        font-size: $size-16;
+    }
+    > ul {
+        display: flex;
+        flex-direction: column;
+        li {
+            display: flex;
+            justify-content: space-between;
+            font-size: $size-12;
+            flex: 1;
+            padding: $size-10 0;
+            border-bottom: 1px solid $grey-10;
+            &:first-of-type {
+                border-top: 1px solid $grey-10;
+            }
+            p {
+                font-size: $size-10;
+                color: $grey-100;
+                margin-top: $size-4;
+            }
+            span {
+                color: $orange-100;
+                margin-left: $size-4;
+            }
+        }
+    }
+    .transact {
+        svg {
+            display: inline;
+        }
+        div {
+            display: inline-block;
+            margin: 0 0 0 16px;
+        }
+    }
+}

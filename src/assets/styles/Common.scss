@@ -5,6 +5,11 @@ body {
     font-family: $font-corps;
     background-color: $black-100;
     position: relative;
+}
+
+body,
+main,
+#root {
     height: 100%;
 }
 
@@ -49,8 +54,8 @@ h6 {
     position: absolute;
     z-index: -1;
     left: 25%;
-    top: 50%;
-    transform: translate(-50%, -50%);
+    top: $size-50-pct;
+    transform: translate(-$size-50-pct, -$size-50-pct);
     border-radius: $size-50-pct;
     background: $linear-gradient;
     filter: blur(200px);
@@ -59,5 +64,5 @@ h6 {
 .mainWrapper {
     // max-width: calc(100% - $size-32);
     // width: $size-1280;
-    margin: -$size-80 auto 0 auto;
+    // margin: -$size-80 auto 0 auto;
 }
