@@ -5,81 +5,81 @@
     border-radius: $size-8;
     overflow: hidden;
     background-color: $grey-50;
-}
-.transfert > div:first-child {
-    padding: $size-8 $size-12;
-    background: $grey-50;
-    display: flex;
-    position: relative;
-}
-.transfert > div:first-child:after {
-    content: "";
-    width: 6px;
-    height: 6px;
-    border: 2px solid $white-100;
-    border-radius: 1px 1px 1px;
-    border-top: 0;
-    border-left: 0;
-    transform: rotate(45deg);
-    transition: transform 0.3s;
-    position: absolute;
-    right: $size-12;
-    top: 0;
-    bottom: 0;
-    margin: auto;
-}
-.transfert select {
-    color: $white-100;
-    font-weight: $font-w-700;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    border: 0;
-    appearance: none;
-    background-color: transparent;
-    font-size: $size-16;
-    flex: 2;
-    cursor: pointer;
-}
-.transfert > div:last-child {
-    padding: $size-12 $size-24;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-.transfert > div:last-child .deviseCat {
-    display: flex;
-    gap: $size-10;
-    align-items: center;
+    > div:first-child {
+        padding: $size-8 $size-12;
+        background: $grey-50;
+        display: flex;
+        position: relative;
+        &:after {
+            content: "";
+            width: 6px;
+            height: 6px;
+            border: 2px solid $white-100;
+            border-radius: 1px 1px 1px;
+            border-top: 0;
+            border-left: 0;
+            transform: rotate(45deg);
+            transition: transform 0.3s;
+            position: absolute;
+            right: $size-12;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+        }
+    }
+    select {
+        color: $white-100;
+        font-weight: $font-w-700;
+        appearance: none;
+        border: 0;
+        background-color: transparent;
+        font-size: $size-16;
+        flex: 2;
+        cursor: pointer;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+    }
+    > div:last-child {
+        padding: $size-12 $size-24;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        .deviseCat {
+            display: flex;
+            gap: $size-10;
+            align-items: center;
+        }
+    }
 }
 .flagUs {
     width: $size-20;
     height: $size-20;
-    display: block;
-    background: url(https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/US_flag_49_stars.svg/1280px-US_flag_49_stars.svg.png);
+    background: url("https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/US_flag_49_stars.svg/1280px-US_flag_49_stars.svg.png")
+        no-repeat center center;
     background-size: cover;
     border-radius: 50%;
-    margin: 0 $size-10 0 0;
+    margin-right: $size-10;
 }
-
 .wallet {
     display: flex;
     justify-content: space-between;
-}
-.wallet strong {
-    font-size: $size-16;
-    font-weight: $font-w-700;
-}
-.wallet p {
-    font-size: $size-10;
-    font-weight: $font-w-300;
-    color: $grey-100;
-    margin: $size-4 0 0 0;
+    strong {
+        font-size: $size-16;
+        font-weight: $font-w-700;
+    }
+
+    p {
+        font-size: $size-10;
+        font-weight: $font-w-300;
+        color: $grey-100;
+        margin-top: $size-4;
+    }
+    > div:last-child {
+        display: flex;
+        align-items: center;
+        gap: $size-10;
+    }
 }
 .piece {
     width: $size-26;
-}
-.wallet > div:last-child {
-    display: flex;
-    align-items: center;
-    gap: $size-10;
 }

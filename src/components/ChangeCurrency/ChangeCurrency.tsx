@@ -1,7 +1,7 @@
 import React from "react";
 import { Button } from "../Button";
 import Coin from "../../assets/images/png/coin/coin-cat__full.png";
-import { ArrowRight } from "phosphor-react";
+import { ArrowRight, ArrowUpRight, Gear } from "phosphor-react";
 
 import "./ChangeCurrency.scss";
 
@@ -38,9 +38,11 @@ const ChangeCurrency: React.FC = () => {
             </div>
             <div className="send">
                 <Button variant="primary" rounded={false}>
+                    <ArrowUpRight size={16} />
                     Envoyer un token
                 </Button>
                 <Button variant="secondary" rounded={false}>
+                    <Gear size={16} />
                     Gérer les tokens
                 </Button>
             </div>

@@ -1,7 +1,6 @@
 @import "../assets/styles/Variables";
-
 .dashboardWrapper {
-    padding: 5.3125rem 0 0 0;
+    padding: 5.3125rem 0 0;
     margin: auto;
     max-width: calc(100% - 32px);
     width: $size-1280;
@@ -12,52 +11,52 @@
     }
     .dashboard-left {
         width: 65%;
+        .top {
+            padding: 0;
+            background-color: transparent;
+        }
+        .dashboard-top p {
+            color: $grey-100;
+            font-size: $size-12;
+            font-weight: $font-w-400;
+            margin-top: 16px;
+        }
+        .dashboard-bottom strong {
+            font-size: $size-14;
+        }
     }
-}
-
-.dashboardWrapper > div {
-    display: flex;
-    gap: $size-20;
-    flex-direction: column;
-}
-
-.dashboardWrapper > div > div {
-    background-color: $white-10;
-    padding: $size-24;
-    border-radius: $size-8;
-    color: $white-100;
-}
-
-.dashboardWrapper > .dashboard-left .top {
-    padding: 0;
-    background-color: transparent;
-}
-
-.dashboardWrapper > .dashboard-left .dashboard-top p {
-    color: $grey-100;
-    font-size: $size-12;
-    font-weight: $font-w-400;
-    margin: 16px 0 0 0;
-}
-.dashboardWrapper > .dashboard-left .dashboard-bottom strong {
-    font-size: $size-14;
-}
-.dashboardWrapper > .dashboard-right {
-    flex: 2;
-}
-.dashboardWrapper > .dashboard-right .send {
-    display: flex;
-    gap: $size-10;
-    margin: $size-24 0 0 0;
-}
-.dashboardWrapper > .dashboard-right .send button {
-    font-size: $size-14;
-    padding: $size-12 $size-14;
-    flex: 1;
-    white-space: nowrap;
-}
-.dashboardWrapper > .dashboard-right hr {
-    margin: $size-16 auto;
-    color: $grey-100;
-    opacity: 0.4;
+    .dashboard-right {
+        flex: 2;
+        .send {
+            display: flex;
+            gap: $size-10;
+            margin-top: $size-24;
+            button {
+                font-size: $size-14;
+                padding: $size-12 $size-14;
+                flex: 1;
+                white-space: nowrap;
+                svg {
+                    position: relative;
+                    top: 1px;
+                }
+            }
+        }
+        hr {
+            margin: $size-16 auto;
+            color: $grey-100;
+            opacity: 0.4;
+        }
+    }
+    > div {
+        display: flex;
+        gap: $size-20;
+        flex-direction: column;
+        > div {
+            background-color: $white-10;
+            padding: $size-24;
+            border-radius: $size-8;
+            color: $white-100;
+        }
+    }
 }
