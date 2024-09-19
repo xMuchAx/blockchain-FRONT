@@ -2,8 +2,15 @@ import React from "react";
 import { Button } from "../Button";
 import Coin from "../../assets/images/png/coin/coin-cat__full.png";
 import { ArrowRight, ArrowUpRight, Gear } from "phosphor-react";
-
+import { Autocomplete, TextField } from "@mui/material";
 import "./ChangeCurrency.scss";
+
+const currencies = [
+    { code: "USD", label: "US Dollars" },
+    { code: "EUR", label: "Euros" },
+    { code: "GBP", label: "British Pounds" },
+    { code: "JPY", label: "Japanese Yen" },
+];
 
 const ChangeCurrency: React.FC = () => {
     return (
@@ -22,10 +29,15 @@ const ChangeCurrency: React.FC = () => {
             <div className="transfert">
                 <div>
                     <div className="flagUs"></div>
-                    <select>
-                        <option>US dollars</option>
-                        <option>Euros</option>
-                    </select>
+                    <Autocomplete
+                        disablePortal
+                        options={currencies}
+                        getOptionLabel={(option) => option.label}
+                        sx={{ width: 300 }}
+                        renderInput={(params) => (
+                            <TextField {...params} label="Devise" />
+                        )}
+                    />
                 </div>
                 <div>
                     <span className="devise">320$</span>

@@ -3,52 +3,48 @@
     display: flex;
     flex-direction: column;
     border-radius: $size-8;
-    overflow: hidden;
     background-color: $grey-50;
     > div:first-child {
         padding: $size-8 $size-12;
         background: $grey-50;
         display: flex;
+        align-items: center;
+        gap: $size-8;
         position: relative;
-        &:after {
-            content: "";
-            width: 6px;
-            height: 6px;
-            border: 2px solid $white-100;
-            border-radius: 1px 1px 1px;
-            border-top: 0;
-            border-left: 0;
-            transform: rotate(45deg);
-            transition: transform 0.3s;
-            position: absolute;
-            right: $size-12;
-            top: 0;
-            bottom: 0;
-            margin: auto;
-        }
-    }
-    select {
-        color: $white-100;
-        font-weight: $font-w-700;
-        appearance: none;
-        border: 0;
-        background-color: transparent;
-        font-size: $size-16;
-        flex: 2;
-        cursor: pointer;
-        -webkit-appearance: none;
-        -moz-appearance: none;
+        border-radius: $size-8 $size-8 $size-0 $size-0;
     }
     > div:last-child {
         padding: $size-12 $size-24;
         display: flex;
         align-items: center;
         justify-content: space-between;
+        font-weight: $font-w-700;
         .deviseCat {
             display: flex;
             gap: $size-10;
             align-items: center;
         }
+    }
+
+    .MuiAutocomplete-root {
+        background-color: transparent;
+        color: $white-100;
+        font-size: $size-14;
+        border-radius: $size-4;
+        width: 100%;
+    }
+
+    .MuiAutocomplete-root .MuiOutlinedInput-root {
+        padding: 0;
+    }
+
+    .MuiFormControl-root {
+        border: none;
+    }
+
+    .MuiInputBase-input {
+        padding: $size-4 $size-8;
+        font-size: $size-12;
     }
 }
 .flagUs {
@@ -58,7 +54,6 @@
         no-repeat center center;
     background-size: cover;
     border-radius: 50%;
-    margin-right: $size-10;
 }
 .wallet {
     display: flex;

@@ -1,22 +1,41 @@
 @import "../assets/styles/Variables";
+
 .inscription_page {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
+    grid-template-areas: "left right";
     align-items: center;
     height: 100%;
+    overflow: hidden;
+}
+
+.inscription_page .left {
+    grid-area: left;
+}
+
+.inscription_page .right {
+    grid-area: right;
+}
+
+.inscription_page.login {
+    grid-template-areas: "right left";
+    .right {
+        border-radius: $size-0 $size-20 $size-20 $size-0;
+    }
 }
 
 .left {
     display: flex;
     align-items: center;
-    justify-content: cen    ter;
+    justify-content: center;
+    position: relative;
     img {
         width: $size-50-pct;
     }
 }
 
 .right {
-    height: 100vh;  
+    height: 100vh;
     height: 100dvh;
     padding: $size-50 $size-50;
     flex-direction: column;
