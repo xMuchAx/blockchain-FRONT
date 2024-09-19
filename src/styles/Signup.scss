@@ -1,5 +1,4 @@
 @import "../assets/styles/Variables";
-
 .inscription_page {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -10,14 +9,15 @@
 .left {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: cen    ter;
     img {
         width: $size-50-pct;
     }
 }
 
 .right {
-    height: 100%;
+    height: 100vh;  
+    height: 100dvh;
     padding: $size-50 $size-50;
     flex-direction: column;
     justify-content: center;
