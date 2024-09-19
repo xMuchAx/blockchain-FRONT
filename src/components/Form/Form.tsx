@@ -1,112 +1,155 @@
-import React from "react";
-import { useForm, SubmitHandler } from "react-hook-form";
-// import "../styles/FormComponent.scss";
-import { Button } from "../Button";
+import React, { useState } from 'react';
+import { Button } from '../Button';
+import { callApi } from '../../utils/callApi';
+import { UrlsApi } from '../../utils/urlsApi.enum';
+import { useAuth } from '../../utils/authContext';
+import { useNavigate } from 'react-router-dom';
 
-type FormValues = {
-    username?: string;
-    email: string;
-    password: string;
-    clepublique?: string;
-    cleprivee?: string;
-};
+interface FormProps {
+    mode: 'login' | 'register';
+}
 
-type FormComponentProps = {
-    formType: "signup" | "login";
-    onSubmit: SubmitHandler<FormValues>;
-};
+const Form: React.FC<FormProps> = ({ mode }) => {
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [username, setUsername] = useState('');
+    const [public_address, setPublicAddress] = useState('');
+    const [private_key, setPrivateKey] = useState('');
+    const { login } = useAuth();
+    const navigate = useNavigate(); 
 
-const Form: React.FC<FormComponentProps> = ({ formType, onSubmit }) => {
-    const {
-        register,
-        handleSubmit,
-        formState: { errors },
-    } = useForm<FormValues>();
+    const ClickAuth = async (event: React.FormEvent) => {
+        event.preventDefault(); 
+
+        const data = mode === "register" ? {
+            email: email,
+            password: password,
+            username: username,
+            public_address: public_address,
+            private_key: private_key
+        } : {
+            email:email,
+            password:password
+        };
+        console.log(data)
+
+        try {
+            const response = mode === "register" ?  await callApi(UrlsApi.register,'POST', data) : await callApi(UrlsApi.login,'POST',data);
+            const token = response.token;
+            console.log(response)
+
+            const email = response.user['email'];
+
+            if (token) {
+                login(token, email);
+                navigate('/home');  
+            }
+
+        } catch (error) {
+            console.error('Erreur lors de l\'inscription :', error);
+        }
+    }
+
 
     return (
-        <form onSubmit={handleSubmit(onSubmit)}>
-            {formType === "signup" && (
+        <form onSubmit={ClickAuth}>
+            {mode === 'register' && (
                 <div className="formGroup">
                     <label htmlFor="username">Nom d'utilisateur</label>
                     <input
                         type="text"
                         placeholder="Entrez votre nom d'utilisateur"
                         id="username"
-                        {...register("username", {
-                            required: "Nom d'utilisateur requis",
-                        })}
+                        name="username"
+                        value={username}
+                        onChange={(e) => setUsername(e.target.value)}
                     />
-                    {errors.username && <span>{errors.username.message}</span>}
                 </div>
             )}
-
-            <div className="formGroup">
-                <label htmlFor="email">Email</label>
-                <input
-                    type="email"
-                    placeholder="Entrez votre adresse mail"
-                    id="email"
-                    {...register("email", {
-                        required: "Adresse mail requise",
-                        pattern: {
-                            value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-                            message: "Adresse mail invalide",
-                        },
-                    })}
-                />
-                {errors.email && <span>{errors.email.message}</span>}
-            </div>
-
-            <div className="formGroup">
-                <label htmlFor="password">Mot de passe</label>
-                <input
-                    type="password"
-                    placeholder="Entrez votre mot de passe"
-                    id="password"
-                    {...register("password", {
-                        required: "Mot de passe requis",
-                    })}
-                />
-                {errors.password && <span>{errors.password.message}</span>}
-            </div>
-
-            {formType === "signup" && (
+            {mode === 'register' ? (
+                <div className="key">
+                    <div className="formGroup">
+                        <label htmlFor="email">Email</label>
+                        <input
+                            type="email"
+                            placeholder="Entrez votre adresse mail"
+                            id="email"
+                            name="email"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                        />
+                    </div>
+                    <div className="formGroup">
+                        <label htmlFor="password">Mot de passe</label>
+                        <input
+                            type="password"
+                            placeholder="Entrez votre mot de passe"
+                            id="password"
+                            name="password"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                        />
+                    </div>
+                </div>
+            ) : (
                 <>
                     <div className="formGroup">
-                        <label htmlFor="clepublique">Clé publique</label>
+                        <label htmlFor="email">Email</label>
                         <input
-                            type="text"
-                            placeholder="Entrez votre clé publique"
-                            id="clepublique"
-                            {...register("clepublique", {
-                                required: "Clé publique requise",
-                            })}
+                            type="email"
+                            placeholder="Entrez votre adresse mail"
+                            id="email"
+                            name="email"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
                         />
-                        {errors.clepublique && (
-                            <span>{errors.clepublique.message}</span>
-                        )}
                     </div>
-
                     <div className="formGroup">
-                        <label htmlFor="cleprivee">Clé privée</label>
+                        <label htmlFor="password">Mot de passe</label>
                         <input
-                            type="text"
-                            placeholder="Entrez votre clé privée"
-                            id="cleprivee"
-                            {...register("cleprivee", {
-                                required: "Clé privée requise",
-                            })}
+                            type="password"
+                            placeholder="Entrez votre mot de passe"
+                            id="password"
+                            name="password"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
                         />
-                        {errors.cleprivee && (
-                            <span>{errors.cleprivee.message}</span>
-                        )}
                     </div>
                 </>
             )}
 
+            {mode === 'register' && (
+            <div className="key">
+                    <div className="formGroup">
+                        <label htmlFor="public_address">Clé publique</label>
+                        <input
+                            type="text"
+                            placeholder="Entrez votre clé publique"
+                            id="public_address"
+                            name="public_address"
+                            value={public_address}
+                            onChange={(e) => setPublicAddress(e.target.value)}
+                        />
+                    </div>
+                    <div className="formGroup">
+                        <label htmlFor="private_key">Clé privée</label>
+                        <input
+                            type="text"
+                            placeholder="Entrez votre clé privée"
+                            id="private_key"
+                            name="private_key"
+                            value={private_key}
+                            onChange={(e) => setPrivateKey(e.target.value)}
+                        />
+                    </div>
+                </div>
+            )}
+            <div className="conditions">
+                <p>J'accepte les conditions générales d'utilisation...</p>
+            </div>
             <div className="button">
                 <Button variant="primary" rounded={false}>
-                    {formType === "signup" ? "S'inscrire" : "Se connecter"}
+                    {mode === 'register' ? "S'inscrire" : 'Se connecter'}
                 </Button>
             </div>
         </form>
