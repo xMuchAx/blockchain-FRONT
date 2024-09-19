@@ -14,6 +14,7 @@
         align-items: center;
         justify-content: space-between;
         height: 100vh;
+        height: 100dvh;
         padding-block-start: 150px;
         .heroContent {
             display: flex;
@@ -115,6 +116,6 @@
         transform: translateY(0);
     }
     50% {
-        transform: translateY(24px);
+        transform: translateY($size-24);
     }
 }
