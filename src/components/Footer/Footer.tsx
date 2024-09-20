@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./Footer.scss";
 
 const Footer: React.FC = () => {
@@ -7,16 +8,16 @@ const Footer: React.FC = () => {
             <p>© Copyright 2024 - M1 Dev ECV Paris All Rights Reserved.</p>
             <ul>
                 <li>
-                    <a href="/cgv">CGV</a>
+                    <Link to="/cgv">CGV</Link>
                 </li>
                 <li>
-                    <a href="/cgu">CGU</a>
+                    <Link to="/cgu">CGU</Link>
                 </li>
                 <li>
-                    <a href="/rgpd">RGPD</a>
+                    <Link to="/rgpd">RGPD</Link>
                 </li>
                 <li>
-                    <a href="/contact">Nous contacter</a>
+                    <Link to="/contact">Nous contacter</Link>
                 </li>
             </ul>
         </footer>
