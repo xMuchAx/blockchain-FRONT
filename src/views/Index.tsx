@@ -50,21 +50,29 @@ const Home: React.FC = () => {
             <section className="gridWrapper">
                 <div className="gridLeft">
                     <h2>Transparence, Décentralisation et Sécurité</h2>
-                    <p>
-                        CAT² est une monnaie numérique innovante, conçue pour
-                        garantir transparence, décentralisation, et sécurité sur
-                        la blockchain Ethereum. Grâce à ERC-1155 d'OpenZeppelin,
-                        chaque transaction est claire et accessible, permettant
-                        à tous les utilisateurs de suivre en temps réel
-                        l’évolution de leurs actifs. La décentralisation de CAT²
-                        élimine les intermédiaires, offrant aux utilisateurs un
-                        contrôle direct et sécurisé de leurs tokens. Avec
-                        Hardhat Ignition pour le déploiement des smart contracts
-                        et Ethers.js pour les interactions blockchain, CAT²
-                        assure une infrastructure robuste et sûre, protégeant
-                        les actifs de ses utilisateurs tout en garantissant une
-                        autonomie totale.
-                    </p>
+                    <div className="gridContent">
+                        <p>
+                            CAT² est une monnaie numérique innovante, conçue
+                            pour garantir transparence, décentralisation, et
+                            sécurité sur la blockchain Ethereum. Grâce à
+                            ERC-1155 d'OpenZeppelin, chaque transaction est
+                            claire et accessible, permettant à tous les
+                            utilisateurs de suivre en temps réel l’évolution de
+                            leurs actifs.
+                        </p>
+                        <p>
+                            La décentralisation de CAT² élimine les
+                            intermédiaires, offrant aux utilisateurs un contrôle
+                            direct et sécurisé de leurs tokens.
+                        </p>
+                        <p>
+                            Avec Hardhat Ignition pour le déploiement des smart
+                            contracts et Ethers.js pour les interactions
+                            blockchain, CAT² assure une infrastructure robuste
+                            et sûre, protégeant les actifs de ses utilisateurs
+                            tout en garantissant une autonomie totale.
+                        </p>
+                    </div>
                 </div>
                 <div className="gridRight">
                     <div className="gridTop">
