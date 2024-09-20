@@ -2,6 +2,7 @@
 .hist {
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     gap: $size-24;
     height: 100%;
     > strong {
@@ -37,11 +38,12 @@
         svg {
             display: inline;
         }
-        .transact-details,
-        .transact-infos {
-            display: flex;
-            flex-direction: column;
-            gap: $size-4;
-        }
+    }
+
+    .transact-details,
+    .transact-infos {
+        display: flex;
+        flex-direction: column;
+        gap: $size-4;
     }
 }

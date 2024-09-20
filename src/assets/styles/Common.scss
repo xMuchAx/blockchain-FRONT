@@ -5,12 +5,7 @@ body {
     font-family: $font-corps;
     background-color: $black-100;
     position: relative;
-}
-
-body,
-main,
-#root {
-    height: 100%;
+    height: fit-content;
 }
 
 h1,
@@ -21,6 +16,7 @@ h5,
 h6 {
     font-family: $font-title;
     color: $white-100;
+    line-height: normal;
 }
 
 h1 {
@@ -50,6 +46,7 @@ h6 {
 .eclipse {
     width: 700px;
     height: 1075.77px;
+    max-height: 100%;
     transform: rotate(90deg);
     position: absolute;
     z-index: -1;

@@ -67,7 +67,7 @@ $font-w-800: 800;
 $font-w-900: 900;
 
 // Font sizes
-$font-s-body: clamp(1rem, 1vw + 0.5rem, 1.2rem);
+$font-s-body: clamp(0.9rem, 1vw + 0.5rem, 1rem);
 $font-s-h1: clamp(2rem, 2.5vw + 1rem, 3rem);
 $font-s-h2: clamp(1.75rem, 2vw + 0.875rem, 2.5rem);
 $font-s-h3: clamp(1.5rem, 1.5vw + 0.75rem, 2rem);
@@ -103,6 +103,12 @@ $size-50: 3.125rem;
 $size-80: 5rem;
 $size-85: 5.3125rem;
 $size-100: 6.25rem;
+$size-120: 7.5rem;
+$size-128: 8rem;
+$size-135: 8.4375rem;
+$size-140: 8.75rem;
+$size-145: 9.0625rem;
+$size-150: 9.375rem;
 $size-1280: 80rem;
 $size-50-pct: 50%;
 

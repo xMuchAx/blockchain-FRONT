@@ -1,44 +1,46 @@
-import React, { FC } from "react";
+import React from "react";
 import { TrendUp, TrendDown } from "phosphor-react";
 
 import "./Historique.scss";
-
-interface HistoriqueProps {
-    direction: "up" | "down";
-    id: string;
-    recipient: string;
+import { useAuth } from "../../utils/authContext";
+export interface Transfer {
     amount: number;
-    date: string;
+    from: string;
+    operator: string;
+    to: string;
+    toId: number;
+}
+interface HistoriqueProps {
+    transfers: Transfer[];
 }
 
-const Historique: FC<HistoriqueProps> = ({
-    direction,
-    id,
-    recipient,
-    amount,
-    date,
-}) => {
+const Historique: React.FC<HistoriqueProps> = ({ transfers }) => {
+    const {user} = useAuth()
     return (
-        <li className={direction === "up" ? "up" : "down"}>
-            <div className="transact">
-                {direction === "up" ? (
-                    <TrendUp size={21} color="#00a478" />
-                ) : (
-                    <TrendDown size={21} color="#F64C02" />
-                )}
-                <div>
-                    <strong>Transaction #{id}</strong>
-                    <p>Reçu par {recipient}</p>
-                </div>
-            </div>
-            <div className="transact-infos">
-                <strong>
-                    {amount < 0 ? "-" : "+"} {Math.abs(amount)}{" "}
-                    <span>CAT²</span>
-                </strong>
-                <p>{date}</p>
-            </div>
-        </li>
+        <ul className="historique">
+            {transfers.map((transfer, key) => (
+                <li className={transfer.operator === user?.public_address ? "up" : "down"}>
+                    <div className="transact">
+                        {transfer.operator === user?.public_address ? (
+                            <TrendUp size={21} color="#00a478" />
+                        ) : (
+                            <TrendDown size={21} color="#F64C02" />
+                        )}
+                        <div className="transact-details">
+                            <strong>Transaction #{key}</strong>
+                            <p>Reçu par {transfer.to}</p>
+                        </div>
+                    </div>
+                    <div className="transact-infos">
+                        <strong>
+                            {transfer.amount < 0 ? "-" : "+"} {Math.abs(transfer.amount)}{" "}
+                            <span>CAT²</span>
+                        </strong>
+                        {/* <p>{date}</p> */}
+                    </div>
+                </li>
+            ))}
+        </ul>
     );
 };
 

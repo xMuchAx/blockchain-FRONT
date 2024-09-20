@@ -1,20 +1,69 @@
-import React, { FC } from "react";
+import React, { FC, useEffect, useState } from "react";
 import { Button } from "../components/Button";
 import { Historique } from "../components/Historique";
 import { ChangeCurrency } from "../components/ChangeCurrency";
-
-
 import "../styles/Dashboard.scss";
 import { Chart } from "../components/Chart";
+import Modal from "@mui/material/Modal";
+import Box from "@mui/material/Box";
+import { useAuth } from "../utils/authContext";
+import { useNavigate } from "react-router-dom";
+import { UrlsApi } from "../utils/urlsApi.enum";
+import { callApi } from "../utils/callApi";
+import { Transfer } from "../components/Historique/Historique";
+
+import { HandPointing, X } from "phosphor-react";
 
 const Dashboard: FC = () => {
+    const [openModal, setOpenModal] = useState(false);
+    const { isLoggedIn } = useAuth();
+    const navigate = useNavigate();
+
+
+    const handleOpenModal = () => setOpenModal(true);
+    const handleCloseModal = () => setOpenModal(false);
+
+    const { user, token } = useAuth();
+    const[ transfers, setTransfers] = useState<Transfer[]>([])
+
+
+    useEffect(() => {
+        const getTransfers = async ()=> {
+            if (user?.public_address) {
+                const UrlsApiToGetTransfers = UrlsApi.transactions + `/${user?.public_address}`;
+
+                try {
+                    const response = await callApi(UrlsApiToGetTransfers, "GET", null , token);
+                    setTransfers(response.transfers)
+
+                } catch (error) {
+                    console.error("Error fetching transactions:", error);
+                }
+            }
+
+        }
+    
+        getTransfers(); 
+    }, [token, transfers, user?.public_address]);
+
+    const userIsLoggedIn = isLoggedIn();
+    if (!userIsLoggedIn) {
+        console.log("Erreur");
+        navigate("Login");
+    }
+
     return (
         <section className="dashboardWrapper">
             <div className="dashboard-left">
                 <div className="dashboard-top">
-                    <h1>
-                        Bonjour, <span className="colored">Bob</span>
-                    </h1>
+                    {user ? (
+                        <h1>
+                            Bonjour,{" "}
+                            <span className="colored">{user.username}</span>
+                        </h1>
+                    ) : (
+                        <h1>Vous n'êtes pas connecté !</h1>
+                    )}
                     <p>Bienvenue sur votre portefeuille</p>
                 </div>
                 <div className="dashboard-bottom">
@@ -26,27 +75,43 @@ const Dashboard: FC = () => {
                 <div className="hist">
                     <strong>Historique des transactions</strong>
                     <ul>
-                        <Historique
-                            direction="up"
-                            id="324"
-                            recipient="Alice"
-                            amount={32}
-                            date="17/09/2024"
-                        />
-                        <Historique
-                            direction="down"
-                            id="324"
-                            recipient="Joe"
-                            amount={-332}
-                            date="17/09/2028"
-                        />
+                            <Historique transfers={transfers.slice(0,2)}/>
                     </ul>
-                    <Button variant="secondary" rounded={false}>
+                    <Button
+                        variant="secondary"
+                        rounded={false}
+                        onClick={handleOpenModal}
+                    >
+                        <HandPointing size={16} weight="bold" />
                         Voir toutes les transactions
                     </Button>
                 </div>
             </div>
             <div className="eclipse"></div>
+
+            <Modal
+                open={openModal}
+                onClose={handleCloseModal}
+                aria-labelledby="transactions-modal"
+                aria-describedby="list-of-transactions"
+            >
+                <Box className="modalContent">
+                    <h2>Historique des transactions</h2>
+                    <div className="hist">
+                        <ul>
+                            <Historique transfers={transfers}/>
+                        </ul>
+                    </div>
+                    <Button
+                        variant="secondary"
+                        rounded={false}
+                        onClick={handleCloseModal}
+                    >
+                        <X size={16} weight="bold" />
+                        Fermer
+                    </Button>
+                </Box>
+            </Modal>
         </section>
     );
 };
