@@ -39,8 +39,9 @@ const Form: React.FC<FormProps> = ({ mode }) => {
 
             const token = response.token;
             const user = response.user
-
+            
             if (token) {
+                console.log(token)
                 localStorage.setItem("token", token);
                 localStorage.setItem("user", JSON.stringify(user));
 

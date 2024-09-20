@@ -15,7 +15,6 @@ import "./ChangeCurrency.scss";
 import { UrlsApi } from "../../utils/urlsApi.enum";
 import { callApi } from "../../utils/callApi";
 import { useAuth } from "../../utils/authContext";
-import { useNavigate } from "react-router-dom";
 
 const exchangeRates: { [key: string]: number } = {
     USD: 0.005,
@@ -32,8 +31,7 @@ const currencies = [
 ];
 
 const ChangeCurrency: React.FC = () => {
-    const { user, token, isLoggedIn } = useAuth();
-    const navigate = useNavigate();
+    const { user, token } = useAuth();
 
     
     // State for modals
@@ -56,12 +54,6 @@ const ChangeCurrency: React.FC = () => {
 
     const handleOpenSecondModal = () => setOpenSecondModal(true);
     const handleCloseSecondModal = () => setOpenSecondModal(false);
-
-    const userIsLoggedIn = isLoggedIn();
-    if (!userIsLoggedIn) {
-        console.log("Erreur");
-        navigate("Login");
-    }
 
     useEffect(() => {
         const getTokenFromUser = async () => {

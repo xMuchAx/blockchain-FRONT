@@ -1,4 +1,4 @@
-import React, { FC, useState } from "react";
+import React, { FC, useEffect, useState } from "react";
 import { Button } from "../components/Button";
 import { Historique } from "../components/Historique";
 import { ChangeCurrency } from "../components/ChangeCurrency";
@@ -6,28 +6,50 @@ import "../styles/Dashboard.scss";
 import { Chart } from "../components/Chart";
 import Modal from "@mui/material/Modal";
 import Box from "@mui/material/Box";
+import { useAuth } from "../utils/authContext";
+import { useNavigate } from "react-router-dom";
+import { UrlsApi } from "../utils/urlsApi.enum";
+import { callApi } from "../utils/callApi";
+import { Transfer } from "../components/Historique/Historique";
+
 
 const Dashboard: FC = () => {
     const [openModal, setOpenModal] = useState(false);
+    const { isLoggedIn } = useAuth();
+    const navigate = useNavigate();
+
 
     const handleOpenModal = () => setOpenModal(true);
     const handleCloseModal = () => setOpenModal(false);
 
-    const transactions: { direction: "up" | "down"; id: string; recipient: string; amount: number; date: string; }[] = [
-        { direction: "up", id: "324", recipient: "Alice", amount: 32, date: "17/09/2024" },
-        { direction: "down", id: "325", recipient: "Bob", amount: -42, date: "18/09/2024" },
-        { direction: "up", id: "326", recipient: "Charlie", amount: 62, date: "19/09/2024" },
-        { direction: "down", id: "325", recipient: "Bob", amount: -42, date: "18/09/2024" },
-        { direction: "up", id: "326", recipient: "Charlie", amount: 62, date: "19/09/2024" },
-        { direction: "down", id: "325", recipient: "Bob", amount: -42, date: "18/09/2024" },
-        { direction: "up", id: "326", recipient: "Charlie", amount: 62, date: "19/09/2024" },   
-        { direction: "down", id: "325", recipient: "Bob", amount: -42, date: "18/09/2024" },
-        { direction: "up", id: "326", recipient: "Charlie", amount: 62, date: "19/09/2024" },
-        { direction: "down", id: "325", recipient: "Bob", amount: -42, date: "18/09/2024" },
-        { direction: "up", id: "326", recipient: "Charlie", amount: 62, date: "19/09/2024" },
-        { direction: "down", id: "325", recipient: "Bob", amount: -42, date: "18/09/2024" },
-        { direction: "up", id: "326", recipient: "Charlie", amount: 62, date: "19/09/2024" },
-    ];
+    const { user, token } = useAuth();
+    const[ transfers, setTransfers] = useState<Transfer[]>([])
+
+
+    useEffect(() => {
+        const getTransfers = async ()=> {
+            if (user?.public_address) {
+                const UrlsApiToGetTransfers = UrlsApi.transactions + `/${user?.public_address}`;
+
+                try {
+                    const response = await callApi(UrlsApiToGetTransfers, "GET", null , token);
+                    setTransfers(response.transfers)
+
+                } catch (error) {
+                    console.error("Error fetching transactions:", error);
+                }
+            }
+
+        }
+    
+        getTransfers(); 
+    }, [token, transfers, user?.public_address]);
+
+    const userIsLoggedIn = isLoggedIn();
+    if (!userIsLoggedIn) {
+        console.log("Erreur");
+        navigate("Login");
+    }
 
     return (
         <section className="dashboardWrapper">
@@ -47,9 +69,7 @@ const Dashboard: FC = () => {
                 <div className="hist">
                     <strong>Historique des transactions</strong>
                     <ul>
-                        {transactions.slice(0, 2).map((transaction, index) => (
-                            <Historique key={index} {...transaction} />
-                        ))}
+                            <Historique transfers={transfers}/>
                     </ul>
                     <Button variant="secondary" rounded={false} onClick={handleOpenModal}>
                         Voir toutes les transactions
@@ -68,9 +88,7 @@ const Dashboard: FC = () => {
                     <h2>Historique des transactions</h2>
                     <div className="hist">
                         <ul>
-                            {transactions.map((transaction, index) => (
-                                <Historique key={index} {...transaction} />
-                            ))}
+                            <Historique transfers={transfers}/>
                         </ul>
                     </div>
                     <Button variant="secondary" rounded={false} onClick={handleCloseModal}>
