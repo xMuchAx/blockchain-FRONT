@@ -225,3 +225,33 @@
         }
     }
 }
+
+.cgv {
+    width: calc(100% - $size-32);
+    max-width: $size-1280;
+    margin: $size-80 auto;
+    display: flex;
+    flex-direction: column;
+    gap: $size-20;
+}
+
+.cgv {
+    li {
+        color: $white-100;
+    }
+}
+
+.cgu {
+    width: calc(100% - $size-32);
+    max-width: $size-1280;
+    margin: $size-80 auto;
+    display: flex;
+    flex-direction: column;
+    gap: $size-20;
+}
+
+.cgu {
+    li {
+        color: $white-100;
+    }
+}
