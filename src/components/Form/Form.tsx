@@ -1,58 +1,62 @@
-import React, { useState } from 'react';
-import { Button } from '../Button';
-import { callApi } from '../../utils/callApi';
-import { UrlsApi } from '../../utils/urlsApi.enum';
-import { useAuth } from '../../utils/authContext';
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from "react";
+import { Button } from "../Button";
+import { callApi } from "../../utils/callApi";
+import { UrlsApi } from "../../utils/urlsApi.enum";
+import { useAuth } from "../../utils/authContext";
+import { useNavigate } from "react-router-dom";
 
 interface FormProps {
-    mode: 'login' | 'register';
+    mode: "login" | "register";
 }
 
 const Form: React.FC<FormProps> = ({ mode }) => {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [username, setUsername] = useState('');
-    const [public_address, setPublicAddress] = useState('');
-    const [private_key, setPrivateKey] = useState('');
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [username, setUsername] = useState("");
+    const [public_address, setPublicAddress] = useState("");
+    const [private_key, setPrivateKey] = useState("");
     const { login } = useAuth();
-    const navigate = useNavigate(); 
+    const navigate = useNavigate();
 
     const ClickAuth = async (event: React.FormEvent) => {
-        event.preventDefault(); 
+        event.preventDefault();
 
-        const data = mode === "register" ? {
-            email: email,
-            password: password,
-            username: username,
-            public_address: public_address,
-            private_key: private_key
-        } : {
-            email:email,
-            password:password
-        };
+        const data =
+            mode === "register"
+                ? {
+                      email: email,
+                      password: password,
+                      username: username,
+                      public_address: public_address,
+                      private_key: private_key,
+                  }
+                : {
+                      email: email,
+                      password: password,
+                  };
 
         try {
-            const response = mode === "register" ?  await callApi(UrlsApi.register,'POST', data) : await callApi(UrlsApi.login,'POST',data);
+            const response =
+                mode === "register"
+                    ? await callApi(UrlsApi.register, "POST", data)
+                    : await callApi(UrlsApi.login, "POST", data);
             const token = response.token;
-            console.log(response)
+            console.log(response);
 
-            const email = response.user['email'];
+            const email = response.user["email"];
 
             if (token) {
                 login(token, email);
-                navigate('/dashboard');  
+                navigate("/dashboard");
             }
-
         } catch (error) {
-            console.error('Erreur lors de l\'inscription :', error);
+            console.error("Erreur lors de l'inscription :", error);
         }
-    }
-
+    };
 
     return (
         <form onSubmit={ClickAuth}>
-            {mode === 'register' && (
+            {mode === "register" && (
                 <div className="formGroup">
                     <label htmlFor="username">Nom d'utilisateur</label>
                     <input
@@ -65,7 +69,7 @@ const Form: React.FC<FormProps> = ({ mode }) => {
                     />
                 </div>
             )}
-            {mode === 'register' ? (
+            {mode === "register" ? (
                 <div className="key">
                     <div className="formGroup">
                         <label htmlFor="email">Email</label>
@@ -117,8 +121,8 @@ const Form: React.FC<FormProps> = ({ mode }) => {
                 </>
             )}
 
-            {mode === 'register' && (
-            <div className="key">
+            {mode === "register" && (
+                <div className="key">
                     <div className="formGroup">
                         <label htmlFor="public_address">Clé publique</label>
                         <input
@@ -144,11 +148,14 @@ const Form: React.FC<FormProps> = ({ mode }) => {
                 </div>
             )}
             <div className="conditions">
-                <p>J'accepte les conditions générales d'utilisation...</p>
+                <input type="checkbox" id="checkbox" />
+                <label htmlFor="checkbox">
+                    J'accepte les conditions générales d'utilisation...
+                </label>
             </div>
             <div className="button">
                 <Button variant="primary" rounded={false}>
-                    {mode === 'register' ? "S'inscrire" : 'Se connecter'}
+                    {mode === "register" ? "S'inscrire" : "Se connecter"}
                 </Button>
             </div>
         </form>
