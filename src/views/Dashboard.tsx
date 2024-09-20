@@ -75,7 +75,7 @@ const Dashboard: FC = () => {
                 <div className="hist">
                     <strong>Historique des transactions</strong>
                     <ul>
-                            <Historique transfers={transfers}/>
+                            <Historique transfers={transfers.slice(0,2)}/>
                     </ul>
                     <Button
                         variant="secondary"

@@ -18,7 +18,7 @@ const Historique: React.FC<HistoriqueProps> = ({ transfers }) => {
     const {user} = useAuth()
     return (
         <ul className="historique">
-            {transfers.slice(0,5).map((transfer, key) => (
+            {transfers.map((transfer, key) => (
                 <li className={transfer.operator === user?.public_address ? "up" : "down"}>
                     <div className="transact">
                         {transfer.operator === user?.public_address ? (
