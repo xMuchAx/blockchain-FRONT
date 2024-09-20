@@ -10,6 +10,7 @@
 
     .colored {
         color: $orange-100;
+        text-transform: capitalize;
     }
 
     .dashboard-left {
@@ -22,9 +23,9 @@
 
         .dashboard-top p {
             color: $grey-100;
-            font-size: $size-12;
+            font-size: $size-14;
             font-weight: $font-w-400;
-            margin-top: $size-16;
+            margin-top: $size-10;
         }
 
         .dashboard-bottom strong {
