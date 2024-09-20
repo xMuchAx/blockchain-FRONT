@@ -13,12 +13,12 @@ const Footer: React.FC = () => {
                 <li>
                     <Link to="/cgu">CGU</Link>
                 </li>
-                <li>
+                {/* <li>
                     <Link to="/rgpd">RGPD</Link>
                 </li>
                 <li>
                     <Link to="/contact">Nous contacter</Link>
-                </li>
+                </li> */}
             </ul>
         </footer>
     );

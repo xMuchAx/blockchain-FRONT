@@ -83,7 +83,7 @@ const Chart = () => {
                 position: "top" as const,
             },
             title: {
-                display: true,
+                display: false,
                 text: "Évolution de Cat² par rapport à d'autres devises",
             },
         },

@@ -35,7 +35,6 @@ const ChangeCurrency: React.FC = () => {
     const { user, token, isLoggedIn } = useAuth();
     const navigate = useNavigate();
 
-    // State for modals
     const [openFirstModal, setOpenFirstModal] = useState(false);
     const [openSecondModal, setOpenSecondModal] = useState(false);
     const [selectedCurrency, setSelectedCurrency] = useState<any>(null);
@@ -43,8 +42,7 @@ const ChangeCurrency: React.FC = () => {
     const [convertedAmount, setConvertedAmount] = useState<number>(0);
     const [tokenAmount, setTokenAmount] = useState(0);
 
-    // Token state
-    const [nbToken, setNbToken] = useState<number | null>(null); // Type as number or null
+    const [nbToken, setNbToken] = useState<number | null>(null);
 
     const handleOpenFirstModal = () => setOpenFirstModal(true);
     const handleCloseFirstModalWithDelay = () => {
@@ -105,9 +103,8 @@ const ChangeCurrency: React.FC = () => {
                         token
                     );
 
-                    // Assuming the response has a 'token' field, adjust based on the actual API response
                     const nbToken = response.nbToken;
-                    setNbToken(nbToken); // Fallback to 0 if no token is available
+                    setNbToken(nbToken);
                     console.log("Number of tokens:", nbToken);
                 } catch (error) {
                     console.error("Errors to get token from user:", error);
@@ -241,7 +238,7 @@ const ChangeCurrency: React.FC = () => {
                     rounded={false}
                     onClick={handleOpenFirstModal}
                 >
-                    <ArrowUpRight size={16} />
+                    <ArrowUpRight size={16} weight="bold" />
                     Envoyer un token
                 </Button>
                 <Modal
@@ -275,21 +272,15 @@ const ChangeCurrency: React.FC = () => {
                         </div>
                         <div className="PopinSend">
                             <Button variant="primary" rounded={false}>
-                                Ajouter
-                            </Button>
-                            <Button
-                                variant="secondary"
-                                rounded={false}
-                                onClick={() => setTokenAmount(0)}
-                            >
-                                Supprimer
+                                Envoyer
+                                <ArrowUpRight size={16} weight="bold" />
                             </Button>
                         </div>
                         <span
                             className="close"
                             onClick={handleCloseFirstModalWithDelay}
                         >
-                            <X size={16} color="#FCFEFF" />
+                            <X size={16} color="#FCFEFF" weight="bold" />
                         </span>
                     </Box>
                 </Modal>
@@ -299,7 +290,7 @@ const ChangeCurrency: React.FC = () => {
                     rounded={false}
                     onClick={handleOpenSecondModal}
                 >
-                    <Gear size={16} />
+                    <Gear size={16} weight="bold" />
                     Gérer les tokens
                 </Button>
 
@@ -313,7 +304,11 @@ const ChangeCurrency: React.FC = () => {
                     <Box className="Modal">
                         <div className="Search">
                             <span>
-                                <MagnifyingGlass size={16} color="#FCFEFF" />
+                                <MagnifyingGlass
+                                    size={16}
+                                    color="#FCFEFF"
+                                    weight="bold"
+                                />
                             </span>
                             <input
                                 type="search"
@@ -342,6 +337,7 @@ const ChangeCurrency: React.FC = () => {
                         </div>
                         <div className="PopinSend">
                             <Button variant="primary" rounded={false}>
+                                <ArrowUpRight size={16} weight="bold" />
                                 Ajouter
                             </Button>
                             <Button
@@ -349,6 +345,7 @@ const ChangeCurrency: React.FC = () => {
                                 rounded={false}
                                 onClick={() => setTokenAmount(0)}
                             >
+                                <X size={16} weight="bold" />
                                 Supprimer
                             </Button>
                         </div>
@@ -356,7 +353,7 @@ const ChangeCurrency: React.FC = () => {
                             className="close"
                             onClick={handleCloseSecondModal}
                         >
-                            <X size={16} color="#FCFEFF" />
+                            <X size={16} color="#FCFEFF" weight="bold" />
                         </span>
                     </Box>
                 </Modal>

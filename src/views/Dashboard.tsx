@@ -6,6 +6,7 @@ import "../styles/Dashboard.scss";
 import { Chart } from "../components/Chart";
 import Modal from "@mui/material/Modal";
 import Box from "@mui/material/Box";
+import { HandPointing, X } from "phosphor-react";
 
 const Dashboard: FC = () => {
     const [openModal, setOpenModal] = useState(false);
@@ -154,6 +155,7 @@ const Dashboard: FC = () => {
                         rounded={false}
                         onClick={handleOpenModal}
                     >
+                        <HandPointing size={16} weight="bold" />
                         Voir toutes les transactions
                     </Button>
                 </div>
@@ -180,6 +182,7 @@ const Dashboard: FC = () => {
                         rounded={false}
                         onClick={handleCloseModal}
                     >
+                        <X size={16} weight="bold" />
                         Fermer
                     </Button>
                 </Box>

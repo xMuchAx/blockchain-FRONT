@@ -1,6 +1,7 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "../Button";
+import { Wallet } from "phosphor-react";
 
 import Logo from "../../assets/images/svg/logo/logo-cat__white.svg";
 
@@ -27,6 +28,7 @@ const Header: React.FC = () => {
                     {userLoggedIn ? (
                         <Link to="/dashboard">
                             <Button variant="primary" rounded={true}>
+                                <Wallet size={20} />
                                 Dashboard
                             </Button>
                         </Link>
