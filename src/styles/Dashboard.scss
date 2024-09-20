@@ -27,6 +27,7 @@
     }
     .dashboard-right {
         flex: 2;
+        width: 35%;
         .send {
             display: flex;
             gap: $size-10;

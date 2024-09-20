@@ -5,11 +5,7 @@ body {
     font-family: $font-corps;
     background-color: $black-100;
     position: relative;
-}
-
-body,
-#root {
-    height: 100%;
+    height: fit-content;
 }
 
 h1,
