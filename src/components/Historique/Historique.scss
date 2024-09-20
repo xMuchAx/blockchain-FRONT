@@ -38,11 +38,12 @@
         svg {
             display: inline;
         }
-        .transact-details,
-        .transact-infos {
-            display: flex;
-            flex-direction: column;
-            gap: $size-4;
-        }
+    }
+
+    .transact-details,
+    .transact-infos {
+        display: flex;
+        flex-direction: column;
+        gap: $size-4;
     }
 }
