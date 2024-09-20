@@ -35,12 +35,16 @@ const Form: React.FC<FormProps> = ({ mode }) => {
         try {
             const response = mode === "register" ?  await callApi(UrlsApi.register,'POST', data) : await callApi(UrlsApi.login,'POST',data);
             const token = response.token;
-            console.log(response)
 
-            const email = response.user['email'];
+            const user = response.user
 
             if (token) {
-                login(token, email);
+                localStorage.setItem("token", token);
+                localStorage.setItem("user", JSON.stringify(user));
+                console.log(localStorage.getItem("user"))
+
+
+                login(token, user);
                 navigate('/dashboard');  
             }
 

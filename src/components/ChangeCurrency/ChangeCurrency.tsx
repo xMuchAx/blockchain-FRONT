@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button } from "../Button";
 import Coin from "../../assets/images/png/coin/coin-cat__full.png";
 import { ArrowRight, ArrowUpRight, Gear } from "phosphor-react";
@@ -6,6 +6,10 @@ import { Autocomplete, TextField } from "@mui/material";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import "./ChangeCurrency.scss";
+import { UrlsApi } from "../../utils/urlsApi.enum";
+import { callApi } from "../../utils/callApi";
+import { useAuth } from "../../utils/authContext";
+import { useNavigate } from "react-router-dom";
 
 const currencies = [
     { code: "USD", label: "US Dollars", flagClass: "flag-us" },
@@ -15,15 +19,52 @@ const currencies = [
 ];
 
 const ChangeCurrency: React.FC = () => {
+    const { user, token, isLoggedIn } = useAuth();
+    const navigate = useNavigate();
+
+    
+    // State for modals
     const [openFirstModal, setOpenFirstModal] = useState(false);
     const [openSecondModal, setOpenSecondModal] = useState(false);
     const [selectedCurrency, setSelectedCurrency] = useState(currencies[0]);
+    
+    // Token state
+    const [nbToken, setNbToken] = useState<number | null>(null); // Type as number or null
 
     const handleOpenFirstModal = () => setOpenFirstModal(true);
     const handleCloseFirstModal = () => setOpenFirstModal(false);
 
     const handleOpenSecondModal = () => setOpenSecondModal(true);
     const handleCloseSecondModal = () => setOpenSecondModal(false);
+
+    const userIsLoggedIn = isLoggedIn();
+    if (!userIsLoggedIn) {
+        console.log("Erreur");
+        navigate("Login");
+    }
+
+    useEffect(() => {
+        const getTokenFromUser = async () => {
+
+            if (user?.public_address) {
+                const UrlsApiToGetToken = UrlsApi.getToken + `/${user?.public_address}`;
+                console.log(token);
+
+                try {
+                    const response = await callApi(UrlsApiToGetToken, "GET", null,token);
+
+                    // Assuming the response has a 'token' field, adjust based on the actual API response
+                    const nbToken = response.nbToken; 
+                    setNbToken(nbToken); // Fallback to 0 if no token is available
+                    console.log("Number of tokens:", nbToken);
+                } catch (error) {
+                    console.error("Errors to get token from user:", error);
+                }
+            }
+        };
+
+        getTokenFromUser();
+    },[token, user.public_address]); 
 
     return (
         <div className="transfert-wallet">
@@ -33,16 +74,14 @@ const ChangeCurrency: React.FC = () => {
                     <p>MAJ à l’instant</p>
                 </div>
                 <div className="wallet-amount">
-                    <span>10</span>
+                    <span>{nbToken !== null ? nbToken : "Loading..."}</span> {/* Fallback for null */}
                     <img src={Coin} alt="Pièce CAT²" className="piece" />
                 </div>
             </div>
             <hr />
             <div className="transfert">
                 <div className="transfert-input">
-                    <div
-                        className={`transfert-flag ${selectedCurrency.flagClass}`}
-                    ></div>
+                    <div className={`transfert-flag ${selectedCurrency.flagClass}`}></div>
                     <Autocomplete
                         disablePortal
                         options={currencies}
@@ -62,8 +101,7 @@ const ChangeCurrency: React.FC = () => {
                         <ArrowRight size={16} weight="bold" />
                     </div>
                     <span className="deviseCat">
-                        320{" "}
-                        <img src={Coin} alt="Pièce CAT²" className="piece" />
+                        320 <img src={Coin} alt="Pièce CAT²" className="piece" />
                     </span>
                 </div>
             </div>
@@ -88,11 +126,7 @@ const ChangeCurrency: React.FC = () => {
                     <Box className="Modal">
                         <p>Gérez vos Tokens</p>
                         <div className="inputToken">
-                            <img
-                                src={Coin}
-                                alt="Pièce CAT²"
-                                className="piece"
-                            />
+                            <img src={Coin} alt="Pièce CAT²" className="piece" />
                             <p>CAT²</p>
                         </div>
                         <input type="number" />

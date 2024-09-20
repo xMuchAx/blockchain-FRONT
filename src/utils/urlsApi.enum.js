@@ -6,4 +6,5 @@ export const UrlsApi = {
     deleteToken:"https://blockchain-api-s1bq.onrender.com/token/deleteToken",
     transfertToken:"https://blockchain-api-s1bq.onrender.com/token/tranfertToken",
     transactions:"https://blockchain-api-s1bq.onrender.com/token/transactions",
+    getToken: "https://blockchain-api-s1bq.onrender.com/token/getTokenOfUser",
   };

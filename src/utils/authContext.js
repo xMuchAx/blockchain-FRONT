@@ -3,17 +3,17 @@ import { createContext, useContext, useState } from 'react';
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-  const [token, setToken] = useState(null);
-  const [userEmail, setUserEmail] = useState(null);
+  const [token, setToken] = useState(localStorage.getItem("token"));
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")))
 
-  const login = (newToken, newUserEmail) => {
+  const login = (newToken, user) => {
     setToken(newToken);
-    setUserEmail(newUserEmail);
+    setUser(user)
   };
 
   const logout = () => {
     setToken(null);
-    setUserEmail(null);
+    setUser(null)
   };
 
   const isLoggedIn = () => {
@@ -21,7 +21,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   return (
-    <AuthContext.Provider value={{ token, userEmail, login, logout, isLoggedIn }}>
+    <AuthContext.Provider value={{ token, user, login, logout, isLoggedIn }}>
       {children}
     </AuthContext.Provider>
   );
