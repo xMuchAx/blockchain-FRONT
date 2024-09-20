@@ -34,14 +34,11 @@ const ChangeCurrency: React.FC = () => {
     const [catAmount, setCatAmount] = useState<number>(320);
     const [convertedAmount, setConvertedAmount] = useState<number>(0);
     const [tokenAmount, setTokenAmount] = useState(0);
-
     const handleOpenFirstModal = () => setOpenFirstModal(true);
-
-    // Ajout d'un délai de 300ms avant la fermeture
     const handleCloseFirstModalWithDelay = () => {
         setTimeout(() => {
             setOpenFirstModal(false);
-        }, 300); // Délai de 300ms
+        }, 300);
     };
 
     const handleOpenSecondModal = () => setOpenSecondModal(true);
@@ -152,10 +149,6 @@ const ChangeCurrency: React.FC = () => {
                     <div className="transfert-arrow">
                         <ArrowRight size={16} weight="bold" />
                     </div>
-                    {/* <span className="devise-cat">
-                        {catAmount}
-                        {selectedCurrency ? " CAT²" : ""}
-                    </span> */}
                     <div className="devise-cat">
                         <input
                             type="number"
@@ -287,7 +280,7 @@ const ChangeCurrency: React.FC = () => {
                         </div>
                         <span
                             className="close"
-                            onClick={handleCloseFirstModalWithDelay}
+                            onClick={handleCloseSecondModal}
                         >
                             <X size={16} color="#FCFEFF" />
                         </span>

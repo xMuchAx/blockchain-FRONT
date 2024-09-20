@@ -85,30 +85,29 @@
     margin: auto;
     display: flex;
     flex-direction: column;
-    gap: $size-8;
-    margin-top: $size-120;
+    gap: $size-24;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
     color: $white-100;
     overflow: hidden;
+    outline: none;
 
-    > h2 {
+    h2 {
         font-size: $size-18;
         margin-bottom: $size-12;
     }
-    > p {
+    p {
         font-size: $size-14;
         color: $white-100;
     }
-
-}
-
-.modalContent > .hist {
-    overflow: hidden;
-}
-.modalContent > .hist > ul {
-    max-height: 510px;
-    overflow-y: scroll;
-}
-
-.modalContent > .hist > ul::-webkit-scrollbar {
-    display: none;
+    .hist {
+        overflow: hidden;
+        ul {
+            max-height: 510px;
+            overflow-y: scroll;
+            padding-right: $size-24;
+        }
+    }
 }

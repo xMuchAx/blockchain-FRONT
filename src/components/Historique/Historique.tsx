@@ -26,7 +26,7 @@ const Historique: FC<HistoriqueProps> = ({
                 ) : (
                     <TrendDown size={21} color="#F64C02" />
                 )}
-                <div className="Transac">
+                <div className="transact-details">
                     <strong>Transaction #{id}</strong>
                     <p>Reçu par {recipient}</p>
                 </div>
