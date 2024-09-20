@@ -1,4 +1,5 @@
 @import "../assets/styles/Variables";
+
 .dashboardWrapper {
     padding: $size-85 $size-0 $size-0;
     margin: auto;
@@ -6,42 +7,53 @@
     width: $size-1280;
     display: flex;
     gap: $size-20;
+
     .colored {
         color: $orange-100;
     }
+
     .dashboard-left {
         width: 65%;
+
         .top {
             padding: 0;
             background-color: transparent;
         }
+
         .dashboard-top p {
             color: $grey-100;
             font-size: $size-12;
             font-weight: $font-w-400;
             margin-top: $size-16;
         }
+
         .dashboard-bottom strong {
             font-size: $size-14;
         }
     }
+
     .dashboard-right {
         flex: 2;
+
+        width: 35%;
         .send {
             display: flex;
             gap: $size-10;
             margin-top: $size-24;
+
             button {
                 font-size: $size-14;
                 padding: $size-12 $size-14;
                 flex: 1;
                 white-space: nowrap;
+
                 svg {
                     position: relative;
                     top: 1px;
                 }
             }
         }
+
         hr {
             margin: $size-16 auto;
             color: $grey-100;
@@ -49,15 +61,53 @@
             width: 100%;
         }
     }
+
     > div {
         display: flex;
         gap: $size-20;
         flex-direction: column;
+
         > div {
             background-color: $white-10;
             padding: $size-24;
             border-radius: $size-8;
             color: $white-100;
+        }
+    }
+}
+
+.modalContent {
+    background-color: $white-15;
+    padding: $size-24;
+    border-radius: $size-8;
+    width: 400px;
+    max-height: 510px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: $size-24;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    color: $white-100;
+    overflow: hidden;
+    outline: none;
+
+    h2 {
+        font-size: $size-18;
+        margin-bottom: $size-12;
+    }
+    p {
+        font-size: $size-14;
+        color: $white-100;
+    }
+    .hist {
+        overflow: hidden;
+        ul {
+            max-height: 510px;
+            overflow-y: scroll;
+            padding-right: $size-24;
         }
     }
 }

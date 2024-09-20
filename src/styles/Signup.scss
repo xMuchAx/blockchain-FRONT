@@ -7,6 +7,12 @@
     align-items: center;
     height: 100%;
     overflow: hidden;
+    position: relative;
+    transition: transform 0.5s ease-in-out; //
+
+    &.translate {
+        transform: translateX(100%); //
+    }
 }
 
 .inscription_page .left {
@@ -51,6 +57,11 @@
     align-items: center;
     justify-content: center;
     gap: $size-30;
+    transition: transform 1s ease-in-out; //
+
+    &.login {
+        transform: translateX(100%); //modification
+    }
 }
 
 .right > div {
