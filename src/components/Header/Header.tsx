@@ -9,6 +9,9 @@ import "./Header.scss";
 const Header: React.FC = () => {
     const location = useLocation();
 
+    const token = localStorage.getItem("token");
+    const userLoggedIn = !!token;
+
     const hidingHeader = location.pathname === "/dashboard";
 
     return (
@@ -21,16 +24,26 @@ const Header: React.FC = () => {
             </Link>
             {!hidingHeader && (
                 <div className="headerButton">
-                    <Link to="/signup">
-                        <Button variant="secondary" rounded={true}>
-                            Inscription
-                        </Button>
-                    </Link>
-                    <Link to="/login">
-                        <Button variant="primary" rounded={true}>
-                            Connexion
-                        </Button>
-                    </Link>
+                    {userLoggedIn ? (
+                        <Link to="/dashboard">
+                            <Button variant="primary" rounded={true}>
+                                Dashboard
+                            </Button>
+                        </Link>
+                    ) : (
+                        <>
+                            <Link to="/signup">
+                                <Button variant="secondary" rounded={true}>
+                                    Inscription
+                                </Button>
+                            </Link>
+                            <Link to="/login">
+                                <Button variant="primary" rounded={true}>
+                                    Connexion
+                                </Button>
+                            </Link>
+                        </>
+                    )}
                 </div>
             )}
         </header>
