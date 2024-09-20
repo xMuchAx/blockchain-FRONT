@@ -25,6 +25,7 @@
         gap: $size-8;
         position: relative;
         border-radius: $size-8 $size-8 $size-0 $size-0;
+        height: $size-40;
     }
 
     .transfert-output {
@@ -34,8 +35,10 @@
         justify-content: space-between;
         font-weight: $font-w-700;
         position: relative;
+        overflow: hidden;
+        height: $size-50;
 
-        .deviseCat {
+        .devise-cat {
             display: flex;
             gap: $size-10;
             align-items: center;
@@ -47,6 +50,19 @@
             top: $size-50-pct;
             transform: translate(-$size-50-pct, -$size-50-pct);
         }
+
+        .cat-amount-input {
+            width: $size-85;
+            background-color: transparent;
+            border: none;
+            font-size: $size-20;
+            font-weight: $font-w-700;
+            color: $white-100;
+            text-align: right;
+            &:focus-visible {
+                outline: none;
+            }
+        }
     }
 
     .MuiAutocomplete-root {
@@ -56,6 +72,23 @@
         border-radius: $size-4;
         width: 100%;
         flex-grow: 1;
+        .MuiOutlinedInput-root {
+            &:focus-visible {
+                outline: none;
+            }
+        }
+    }
+
+    .MuiAutocomplete-hasPopupIcon.MuiAutocomplete-hasClearIcon.css-1oz3td-MuiAutocomplete-root
+        .MuiOutlinedInput-root {
+        padding: $size-4;
+        &:focus-visible {
+            outline: none;
+        }
+    }
+
+    .MuiOutlinedInput-notchedOutline {
+        border: none;
     }
 
     .MuiAutocomplete-root .MuiOutlinedInput-root {
@@ -64,7 +97,16 @@
 
     .MuiInputBase-input {
         padding: $size-4 $size-8;
-        font-size: $size-12;
+        font-size: $size-16;
+        font-weight: bold;
+        font-family: $font-corps;
+        color: $white-100;
+        background-color: transparent;
+    }
+
+    .MuiAutocomplete-root .MuiOutlinedInput-root .MuiAutocomplete-input,
+    .MuiAutocomplete-root .MuiOutlinedInput-root {
+        padding: 0px;
     }
 }
 
@@ -76,6 +118,10 @@
     background-position: center;
     border-radius: $size-50-pct;
     flex-shrink: 0;
+}
+
+.flag-default {
+    background-image: url("../../assets/images/png/coin/coin-cat__full.png");
 }
 
 .flag-us {
@@ -92,6 +138,10 @@
 
 .flag-jpy {
     background-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Flag_of_Japan.svg/30px-Flag_of_Japan.svg.png");
+}
+
+.flag-inr {
+    background-image: url("https://upload.wikimedia.org/wikipedia/commons/4/41/Flag_of_India.svg");
 }
 
 .wallet {
@@ -150,7 +200,9 @@
 }
 
 .send-buttons {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    width: 100%;
     gap: $size-10;
     margin-top: $size-16;
 }
