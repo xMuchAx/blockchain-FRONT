@@ -132,6 +132,7 @@
                 gap: $size-14;
             }
         }
+
         .gridRight {
             display: flex;
             flex-direction: column;
@@ -185,3 +186,21 @@
         transform: translateY($size-24);
     }
 }
+
+
+.gridRight {
+    .gridTop {
+        .gridTopLeft, .gridTopRight {
+            img {
+                width: $size-150;
+            }
+        }
+        }
+        .gridBottom {
+            width: 100%;
+            img {
+                width: $size-150;
+            }
+        }
+    }
+

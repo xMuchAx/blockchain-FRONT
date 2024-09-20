@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button } from "../Button";
 import Coin from "../../assets/images/png/coin/coin-cat__full.png";
 import {
@@ -12,6 +12,10 @@ import { Autocomplete, TextField } from "@mui/material";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import "./ChangeCurrency.scss";
+import { UrlsApi } from "../../utils/urlsApi.enum";
+import { callApi } from "../../utils/callApi";
+import { useAuth } from "../../utils/authContext";
+import { useNavigate } from "react-router-dom";
 
 const exchangeRates: { [key: string]: number } = {
     USD: 0.005,
@@ -28,12 +32,20 @@ const currencies = [
 ];
 
 const ChangeCurrency: React.FC = () => {
+    const { user, token, isLoggedIn } = useAuth();
+    const navigate = useNavigate();
+
+    // State for modals
     const [openFirstModal, setOpenFirstModal] = useState(false);
     const [openSecondModal, setOpenSecondModal] = useState(false);
     const [selectedCurrency, setSelectedCurrency] = useState<any>(null);
     const [catAmount, setCatAmount] = useState<number>(320);
     const [convertedAmount, setConvertedAmount] = useState<number>(0);
     const [tokenAmount, setTokenAmount] = useState(0);
+
+    // Token state
+    const [nbToken, setNbToken] = useState<number | null>(null); // Type as number or null
+
     const handleOpenFirstModal = () => setOpenFirstModal(true);
     const handleCloseFirstModalWithDelay = () => {
         setTimeout(() => {
@@ -43,6 +55,68 @@ const ChangeCurrency: React.FC = () => {
 
     const handleOpenSecondModal = () => setOpenSecondModal(true);
     const handleCloseSecondModal = () => setOpenSecondModal(false);
+
+    const userIsLoggedIn = isLoggedIn();
+    if (!userIsLoggedIn) {
+        console.log("Erreur");
+        navigate("Login");
+    }
+
+    useEffect(() => {
+        const getTokenFromUser = async () => {
+            if (user?.public_address) {
+                const UrlsApiToGetToken =
+                    UrlsApi.getToken + `/${user?.public_address}`;
+
+                try {
+                    const response = await callApi(
+                        UrlsApiToGetToken,
+                        "GET",
+                        null,
+                        token
+                    );
+
+                    const nbToken = response.nbToken;
+
+                    setNbToken(nbToken);
+
+                    console.log("Number of tokens:", nbToken);
+                } catch (error) {
+                    console.error("Errors to get token from user:", error);
+                }
+            }
+        };
+
+        getTokenFromUser();
+    }, [token, user?.public_address]);
+
+    useEffect(() => {
+        const getTokenFromUser = async () => {
+            if (user?.public_address) {
+                const UrlsApiToGetToken =
+                    UrlsApi.getToken + `/${user?.public_address}`;
+                console.log(token);
+
+                try {
+                    const response = await callApi(
+                        UrlsApiToGetToken,
+                        "GET",
+                        null,
+                        token
+                    );
+
+                    // Assuming the response has a 'token' field, adjust based on the actual API response
+                    const nbToken = response.nbToken;
+                    setNbToken(nbToken); // Fallback to 0 if no token is available
+                    console.log("Number of tokens:", nbToken);
+                } catch (error) {
+                    console.error("Errors to get token from user:", error);
+                }
+            }
+        };
+
+        getTokenFromUser();
+    }, [token, user.public_address]);
 
     const incrementToken = () => {
         setTokenAmount((prev) => prev + 1);
@@ -90,7 +164,7 @@ const ChangeCurrency: React.FC = () => {
                     <p>MAJ à l’instant</p>
                 </div>
                 <div className="wallet-amount">
-                    <span>10</span>
+                    <span>{nbToken !== null ? nbToken : "Loading..."}</span>
                     <img src={Coin} alt="Pièce CAT²" className="piece" />
                 </div>
             </div>

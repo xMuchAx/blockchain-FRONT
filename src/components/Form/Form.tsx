@@ -34,20 +34,18 @@ const Form: React.FC<FormProps> = ({ mode }) => {
                       email: email,
                       password: password,
                   };
-
         try {
-            const response =
-                mode === "register"
-                    ? await callApi(UrlsApi.register, "POST", data)
-                    : await callApi(UrlsApi.login, "POST", data);
-            const token = response.token;
-            console.log(response);
+            const response = mode === "register" ? await callApi(UrlsApi.register, "POST", data) : await callApi(UrlsApi.login, "POST", data);
 
-            const email = response.user["email"];
+            const token = response.token;
+            const user = response.user
 
             if (token) {
-                login(token, email);
-                navigate("/dashboard");
+                localStorage.setItem("token", token);
+                localStorage.setItem("user", JSON.stringify(user));
+
+                login(token, user);
+                navigate('/dashboard');  
             }
         } catch (error) {
             console.error("Erreur lors de l'inscription :", error);
