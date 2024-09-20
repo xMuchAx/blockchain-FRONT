@@ -201,7 +201,7 @@ const ChangeCurrency: React.FC = () => {
                         </div>
                         <div className="PopinSend">
                             <Button variant="primary" rounded={false}>
-                                Ajouter
+                                Envoyer
                             </Button>
                             <Button
                                 variant="secondary"
@@ -268,7 +268,7 @@ const ChangeCurrency: React.FC = () => {
                         </div>
                         <div className="PopinSend">
                             <Button variant="primary" rounded={false}>
-                                Ajouter
+                                Envoyer
                             </Button>
                             <Button
                                 variant="secondary"
