@@ -21,8 +21,12 @@ const Dashboard: FC = () => {
         { direction: "up", id: "326", recipient: "Charlie", amount: 62, date: "19/09/2024" },
         { direction: "down", id: "325", recipient: "Bob", amount: -42, date: "18/09/2024" },
         { direction: "up", id: "326", recipient: "Charlie", amount: 62, date: "19/09/2024" },   
-        { direction: "up", id: "326", recipient: "Charlie", amount: 62, date: "19/09/2024" },   
-
+        { direction: "down", id: "325", recipient: "Bob", amount: -42, date: "18/09/2024" },
+        { direction: "up", id: "326", recipient: "Charlie", amount: 62, date: "19/09/2024" },
+        { direction: "down", id: "325", recipient: "Bob", amount: -42, date: "18/09/2024" },
+        { direction: "up", id: "326", recipient: "Charlie", amount: 62, date: "19/09/2024" },
+        { direction: "down", id: "325", recipient: "Bob", amount: -42, date: "18/09/2024" },
+        { direction: "up", id: "326", recipient: "Charlie", amount: 62, date: "19/09/2024" },
     ];
 
     return (
