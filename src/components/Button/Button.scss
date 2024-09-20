@@ -17,6 +17,9 @@
     &:focus-visible {
         outline: none;
     }
+    svg {
+        flex-shrink: 0;
+    }
 }
 
 .btnFull {

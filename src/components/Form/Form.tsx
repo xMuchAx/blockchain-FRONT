@@ -35,7 +35,10 @@ const Form: React.FC<FormProps> = ({ mode }) => {
                       password: password,
                   };
         try {
-            const response = mode === "register" ? await callApi(UrlsApi.register, "POST", data) : await callApi(UrlsApi.login, "POST", data);
+            const response =
+                mode === "register"
+                    ? await callApi(UrlsApi.register, "POST", data)
+                    : await callApi(UrlsApi.login, "POST", data);
 
             const token = response.token;
             const user = response.user
@@ -46,7 +49,7 @@ const Form: React.FC<FormProps> = ({ mode }) => {
                 localStorage.setItem("user", JSON.stringify(user));
 
                 login(token, user);
-                navigate('/dashboard');  
+                navigate("/dashboard");
             }
         } catch (error) {
             console.error("Erreur lors de l'inscription :", error);
@@ -146,12 +149,14 @@ const Form: React.FC<FormProps> = ({ mode }) => {
                     </div>
                 </div>
             )}
-            <div className="conditions">
-                <input type="checkbox" id="checkbox" />
-                <label htmlFor="checkbox">
-                    J'accepte les conditions générales d'utilisation...
-                </label>
-            </div>
+            {mode === "register" && (
+                <div className="conditions">
+                    <input type="checkbox" id="checkbox" required />
+                    <label htmlFor="checkbox">
+                        J'accepte les conditions générales d'utilisation...
+                    </label>
+                </div>
+            )}
             <div className="button">
                 <Button variant="primary" rounded={false}>
                     {mode === "register" ? "S'inscrire" : "Se connecter"}

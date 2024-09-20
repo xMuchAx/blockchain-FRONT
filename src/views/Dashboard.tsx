@@ -12,6 +12,7 @@ import { UrlsApi } from "../utils/urlsApi.enum";
 import { callApi } from "../utils/callApi";
 import { Transfer } from "../components/Historique/Historique";
 
+import { HandPointing, X } from "phosphor-react";
 
 const Dashboard: FC = () => {
     const [openModal, setOpenModal] = useState(false);
@@ -55,9 +56,14 @@ const Dashboard: FC = () => {
         <section className="dashboardWrapper">
             <div className="dashboard-left">
                 <div className="dashboard-top">
-                    <h1>
-                        Bonjour, <span className="colored">Bob</span>
-                    </h1>
+                    {user ? (
+                        <h1>
+                            Bonjour,{" "}
+                            <span className="colored">{user.username}</span>
+                        </h1>
+                    ) : (
+                        <h1>Vous n'êtes pas connecté !</h1>
+                    )}
                     <p>Bienvenue sur votre portefeuille</p>
                 </div>
                 <div className="dashboard-bottom">
@@ -71,7 +77,12 @@ const Dashboard: FC = () => {
                     <ul>
                             <Historique transfers={transfers}/>
                     </ul>
-                    <Button variant="secondary" rounded={false} onClick={handleOpenModal}>
+                    <Button
+                        variant="secondary"
+                        rounded={false}
+                        onClick={handleOpenModal}
+                    >
+                        <HandPointing size={16} weight="bold" />
                         Voir toutes les transactions
                     </Button>
                 </div>
@@ -91,7 +102,12 @@ const Dashboard: FC = () => {
                             <Historique transfers={transfers}/>
                         </ul>
                     </div>
-                    <Button variant="secondary" rounded={false} onClick={handleCloseModal}>
+                    <Button
+                        variant="secondary"
+                        rounded={false}
+                        onClick={handleCloseModal}
+                    >
+                        <X size={16} weight="bold" />
                         Fermer
                     </Button>
                 </Box>

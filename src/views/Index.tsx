@@ -1,5 +1,4 @@
 import React from "react";
-import { Button } from "../components/Button";
 import { Chart } from "../components/Chart";
 import CoinWallet from "../assets/images/svg/wallet/wallet-cat__full.svg";
 import Coin from "../assets/images/png/coin/coin-cat__full.png";
@@ -23,9 +22,6 @@ const Home: React.FC = () => {
                             sécurité et décentralisation, pour bâtir ton trésor
                             en toute confiance.
                         </p>
-                        <Button variant="primary" rounded={false}>
-                            Commencer l&apos;aventure
-                        </Button>
                         <div className="eclipse"></div>
                     </div>
                     <div className="hero-image">
@@ -41,12 +37,9 @@ const Home: React.FC = () => {
                     </div>
                 </div>
             </section>
-            <section className="chartWrapper">
-                <Chart />
-            </section>
             <section className="gridWrapper">
                 <div className="gridLeft">
-                    <h4>Transparence, Décentralisation et Sécurité</h4>
+                    <h2>Transparence, Décentralisation et Sécurité</h2>
                     <div className="gridContent">
                         <p>
                             CAT² est une monnaie numérique innovante, conçue
@@ -74,25 +67,20 @@ const Home: React.FC = () => {
                 <div className="gridRight">
                     <div className="gridTop">
                         <div className="gridTopLeft">
-                            <img 
-                            src={Coin}
-                            alt="Coin"
-                            className="coin"/>
+                            <img src={Coin} alt="Coin" className="coin" />
                         </div>
                         <div className="gridTopRight">
-                        <img 
-                            src={Coffre}
-                            alt="Coffre"
-                            className="coin"/>
+                            <img src={Coffre} alt="Coffre" className="coin" />
                         </div>
                     </div>
                     <div className="gridBottom">
-                    <img 
-                            src={Loupe}
-                            alt="Loupe"
-                            className="Loupe"/>
+                        <img src={Loupe} alt="Loupe" className="Loupe" />
                     </div>
                 </div>
+            </section>
+            <section className="chartWrapper">
+                <h2>Évolution de Cat² par rapport à d'autres devises</h2>
+                <Chart />
             </section>
         </div>
     );

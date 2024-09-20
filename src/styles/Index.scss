@@ -32,6 +32,10 @@
                         color: $orange-100;
                     }
                 }
+                p {
+                    width: 75%;
+                    line-height: normal;
+                }
             }
             .hero-image {
                 width: 25rem;
@@ -111,6 +115,10 @@
         padding: $size-50;
         border-radius: $size-8;
         background-color: $white-10;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        gap: $size-30;
     }
     .gridWrapper {
         display: grid;
@@ -124,7 +132,7 @@
             display: flex;
             flex-direction: column;
             align-items: flex-start;
-            gap: $size-20;
+            justify-content: space-between;
             .gridContent {
                 display: flex;
                 flex-direction: column;
@@ -187,20 +195,19 @@
     }
 }
 
-
 .gridRight {
     .gridTop {
-        .gridTopLeft, .gridTopRight {
-            img {
-                width: $size-150;
-            }
-        }
-        }
-        .gridBottom {
-            width: 100%;
+        .gridTopLeft,
+        .gridTopRight {
             img {
                 width: $size-150;
             }
         }
     }
-
+    .gridBottom {
+        width: 100%;
+        img {
+            width: $size-150;
+        }
+    }
+}
