@@ -8,11 +8,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: $size-16;
+    font-size: $size-14;
     padding-block: $size-32;
-    p {
-        font-size: $size-12;
-    }
     ul {
         display: flex;
         gap: $size-10;

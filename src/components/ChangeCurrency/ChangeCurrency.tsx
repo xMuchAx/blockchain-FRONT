@@ -7,6 +7,13 @@ import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import "./ChangeCurrency.scss";
 
+const exchangeRates: { [key: string]: number } = {
+    USD: 0.005,
+    EUR: 0.0047,
+    GBP: 0.0039,
+    JPY: 0.72,
+};
+
 const currencies = [
     { code: "USD", label: "US Dollars", flagClass: "flag-us" },
     { code: "EUR", label: "Euros", flagClass: "flag-eur" },
@@ -17,13 +24,41 @@ const currencies = [
 const ChangeCurrency: React.FC = () => {
     const [openFirstModal, setOpenFirstModal] = useState(false);
     const [openSecondModal, setOpenSecondModal] = useState(false);
-    const [selectedCurrency, setSelectedCurrency] = useState(currencies[0]);
+    const [selectedCurrency, setSelectedCurrency] = useState<any>(null);
+    const [catAmount, setCatAmount] = useState<number>(320);
+    const [convertedAmount, setConvertedAmount] = useState<number>(0);
 
     const handleOpenFirstModal = () => setOpenFirstModal(true);
     const handleCloseFirstModal = () => setOpenFirstModal(false);
 
     const handleOpenSecondModal = () => setOpenSecondModal(true);
     const handleCloseSecondModal = () => setOpenSecondModal(false);
+
+    const handleCurrencyChange = (event: any, newValue: any) => {
+        if (newValue) {
+            setSelectedCurrency(newValue);
+            setConvertedAmount(catAmount * exchangeRates[newValue.code]);
+        } else {
+            setSelectedCurrency(null);
+            setConvertedAmount(0);
+        }
+    };
+
+    const handleCatAmountChange = (
+        event: React.ChangeEvent<HTMLInputElement>
+    ) => {
+        const newCatAmount = parseFloat(event.target.value) || 0;
+        setCatAmount(newCatAmount);
+        if (selectedCurrency) {
+            setConvertedAmount(
+                newCatAmount * exchangeRates[selectedCurrency.code]
+            );
+        }
+    };
+
+    const flagClass = selectedCurrency
+        ? selectedCurrency.flagClass
+        : "flag-default";
 
     return (
         <div className="transfert-wallet">
@@ -40,31 +75,71 @@ const ChangeCurrency: React.FC = () => {
             <hr />
             <div className="transfert">
                 <div className="transfert-input">
-                    <div
-                        className={`transfert-flag ${selectedCurrency.flagClass}`}
-                    ></div>
                     <Autocomplete
                         disablePortal
                         options={currencies}
+                        autoHighlight
                         getOptionLabel={(option) => option.label}
+                        onChange={handleCurrencyChange}
                         sx={{ width: 300 }}
-                        onChange={(event, newValue) => {
-                            if (newValue) setSelectedCurrency(newValue);
+                        renderOption={(props, option) => {
+                            const { key, ...optionProps } = props;
+                            return (
+                                <Box
+                                    key={key}
+                                    component="li"
+                                    sx={{
+                                        display: "flex",
+                                        alignItems: "center",
+                                        "& .transfert-flag": { mr: 2 },
+                                    }}
+                                    {...optionProps}
+                                >
+                                    <div
+                                        className={`transfert-flag ${option.flagClass}`}
+                                    ></div>
+                                    {option.label}
+                                </Box>
+                            );
                         }}
                         renderInput={(params) => (
-                            <TextField {...params} label="Devise" />
+                            <TextField
+                                {...params}
+                                placeholder="Choisissez une devise"
+                                InputProps={{
+                                    ...params.InputProps,
+                                    startAdornment: (
+                                        <div
+                                            className={`transfert-flag ${flagClass}`}
+                                            style={{ marginRight: 10 }}
+                                        ></div>
+                                    ),
+                                }}
+                            />
                         )}
                     />
                 </div>
                 <div className="transfert-output">
-                    <span className="devise">320 $</span>
+                    <span className="devise">
+                        {convertedAmount.toFixed(2)}{" "}
+                        {selectedCurrency ? selectedCurrency.code : ""}
+                    </span>
                     <div className="transfert-arrow">
                         <ArrowRight size={16} weight="bold" />
                     </div>
-                    <span className="deviseCat">
-                        320{" "}
-                        <img src={Coin} alt="Pièce CAT²" className="piece" />
-                    </span>
+                    {/* <span className="devise-cat">
+                        {catAmount}
+                        {selectedCurrency ? " CAT²" : ""}
+                    </span> */}
+                    <div className="devise-cat">
+                        <input
+                            type="number"
+                            value={catAmount}
+                            onChange={handleCatAmountChange}
+                            className="cat-amount-input"
+                        />
+                        {selectedCurrency ? " CAT²" : ""}
+                    </div>
                 </div>
             </div>
 
